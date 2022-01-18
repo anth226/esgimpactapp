@@ -3,11 +3,11 @@ export default function setupAxios(axios: any, store: any) {
   axios.interceptors.request.use(
     (config: any) => {
       const {
-        auth: {accessToken},
+        auth: {api_token},
       } = store.getState()
 
-      if (accessToken) {
-        config.headers.Authorization = `Bearer ${accessToken}`
+      if (api_token) {
+        config.headers.Authorization = `Bearer ${api_token}`
       }
 
       return config

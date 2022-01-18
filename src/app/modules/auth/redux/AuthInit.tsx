@@ -13,14 +13,14 @@ const AuthInit: FC<PropsFromRedux> = (props) => {
   const didRequest = useRef(false)
   const dispatch = useDispatch()
   const [showSplashScreen, setShowSplashScreen] = useState(true)
-  const accessToken = useSelector<RootState>(({auth}) => auth.accessToken, shallowEqual)
+  const api_token = useSelector<RootState>(({auth}) => auth.api_token, shallowEqual)
 
   // We should request user by authToken before rendering the application
   useEffect(() => {
     const requestUser = async () => {
       try {
         if (!didRequest.current) {
-          const {data: user} = await getUserByToken()
+          const {data: user} = await getUserByToken(api_token as string)
           dispatch(props.fulfillUser(user))
         }
       } catch (error) {
@@ -35,7 +35,7 @@ const AuthInit: FC<PropsFromRedux> = (props) => {
       return () => (didRequest.current = true)
     }
 
-    if (accessToken) {
+    if (api_token) {
       requestUser()
     } else {
       dispatch(props.logout())
