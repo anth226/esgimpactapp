@@ -55,10 +55,10 @@ export function Registration() {
     onSubmit: (values, {setStatus, setSubmitting}) => {
       setLoading(true)
       setTimeout(() => {
-        register(values.email, values.firstname, values.lastname, values.password)
-          .then(({data: {accessToken}}) => {
+        register(values.email, values.firstname, values.lastname, values.password, values.changepassword)
+          .then(({data: {api_token}}) => {
             setLoading(false)
-            dispatch(auth.actions.login(accessToken))
+            dispatch(auth.actions.login(api_token))
           })
           .catch(() => {
             setLoading(false)

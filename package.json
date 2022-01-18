@@ -1,14 +1,14 @@
 {
-  "name": "esgimpactapp",
-  "version": "1.0.1",
+  "name": "demo1",
+  "version": "8.0.35",
   "private": true,
-  "homepage": "/application",
+  "homepage": "/metronic8/react/demo1",
   "dependencies": {
     "@formatjs/intl-pluralrules": "^4.0.28",
     "@formatjs/intl-relativetimeformat": "^9.1.7",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@manaflair/redux-batch": "^1.0.0",
-    "@popperjs/core": "2.10.1",
+    "@popperjs/core": "~2.10.1",
     "@reduxjs/toolkit": "^1.6.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -65,7 +65,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "rtl": "webpack --config webpack-rtl.config.js"
   },
   "eslintConfig": {
     "extends": [

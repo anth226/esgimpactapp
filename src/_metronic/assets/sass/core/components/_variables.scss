@@ -748,7 +748,7 @@ $form-check-radio-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://w
 $form-check-input-indeterminate-color: $component-active-color !default;
 $form-check-input-indeterminate-bg-color: $component-active-bg !default;
 $form-check-input-indeterminate-border-color: $component-active-bg !default;
-$form-check-input-indeterminate-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-indeterminate-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>") !default;
+$form-check-input-indeterminate-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-indeterminate-color}' stroke-linecap='round' stroke-linejoin='round' strokeWidth='3' d='M6 10h8'/></svg>") !default;
 
 $form-check-input-disabled-opacity: 0.5 !default;
 $form-check-label-disabled-opacity: $form-check-input-disabled-opacity !default;

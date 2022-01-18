@@ -1,9 +1,9 @@
 import {Action} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import {put, takeLatest} from 'redux-saga/effects'
+import {put, takeLatest, select} from 'redux-saga/effects'
 import {UserModel} from '../models/UserModel'
-import {getUserByToken} from './AuthCRUD'
+import {getUserByToken} from "./AuthCRUD";
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T
@@ -20,34 +20,30 @@ export const actionTypes = {
 
 const initialAuthState: IAuthState = {
   user: undefined,
-  accessToken: undefined,
+  api_token: undefined,
 }
 
 export interface IAuthState {
   user?: UserModel
-  accessToken?: string
+  api_token?: string
 }
 
 export const reducer = persistReducer(
-  {storage, key: 'v100-demo1-auth', whitelist: ['user', 'accessToken']},
+  {storage, key: 'v100-demo1-auth', whitelist: ['user', 'api_token']},
   (state: IAuthState = initialAuthState, action: ActionWithPayload<IAuthState>) => {
     switch (action.type) {
       case actionTypes.Login: {
-        const accessToken = action.payload?.accessToken
-        return {accessToken, user: undefined}
+        const api_token = action.payload?.api_token
+        return {api_token, user: undefined}
       }
 
       case actionTypes.Register: {
-        const accessToken = action.payload?.accessToken
-        return {accessToken, user: undefined}
+        const api_token = action.payload?.api_token
+        return {api_token, user: undefined}
       }
 
       case actionTypes.Logout: {
         return initialAuthState
-      }
-
-      case actionTypes.UserRequested: {
-        return {...state, user: undefined}
       }
 
       case actionTypes.UserLoaded: {
@@ -67,10 +63,10 @@ export const reducer = persistReducer(
 )
 
 export const actions = {
-  login: (accessToken: string) => ({type: actionTypes.Login, payload: {accessToken}}),
-  register: (accessToken: string) => ({
+  login: (api_token: string) => ({type: actionTypes.Login, payload: {api_token}}),
+  register: (api_token: string) => ({
     type: actionTypes.Register,
-    payload: {accessToken},
+    payload: {api_token},
   }),
   logout: () => ({type: actionTypes.Logout}),
   requestUser: () => ({
@@ -78,6 +74,7 @@ export const actions = {
   }),
   fulfillUser: (user: UserModel) => ({type: actionTypes.UserLoaded, payload: {user}}),
   setUser: (user: UserModel) => ({type: actionTypes.SetUser, payload: {user}}),
+  store: () => ({type: "def"}),
 }
 
 export function* saga() {
@@ -90,7 +87,11 @@ export function* saga() {
   })
 
   yield takeLatest(actionTypes.UserRequested, function* userRequested() {
-    const {data: user} = yield getUserByToken()
+    // @ts-ignore
+    const getToken = (state) => state.auth.api_token;
+    // @ts-ignore
+    let token = yield select(getToken)
+    const {data: user} = yield getUserByToken(token)
     yield put(actions.fulfillUser(user))
   })
 }
