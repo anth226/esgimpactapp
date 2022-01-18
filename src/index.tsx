@@ -11,7 +11,7 @@ import axios from 'axios'
 import {Chart, registerables} from 'chart.js'
 
 // Apps
-import {App} from './app/App'
+import {App} from './App'
 import {MetronicI18nProvider} from './_metronic/i18n/Metronici18n'
 /**
  * TIP: Replace this style import with dark styles to enable dark mode
