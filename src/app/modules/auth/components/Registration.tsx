@@ -9,6 +9,10 @@ import {register} from '../redux/AuthCRUD'
 import {Link} from 'react-router-dom'
 import {toAbsoluteUrl} from '../../../../_metronic/helpers'
 import { PasswordMeterComponent } from "../../../../_metronic/assets/ts/components";
+import InputField from '../../../components/auth/InputField';
+
+
+
 
 const initialValues = {
   firstname: '',
@@ -73,6 +77,8 @@ export function Registration() {
     PasswordMeterComponent.bootstrap();
   }, []);
 
+  console.log(formik, 'formik');
+
   return (
     <form
       className='form w-100 fv-plugins-bootstrap5 fv-plugins-framework'
@@ -80,22 +86,16 @@ export function Registration() {
       id='kt_login_signup_form'
       onSubmit={formik.handleSubmit}
     >
-      {/* begin::Heading */}
       <div className='mb-10 text-center'>
-        {/* begin::Title */}
         <h1 className='text-dark mb-3'>Create an Account</h1>
-        {/* end::Title */}
 
-        {/* begin::Link */}
         <div className='text-gray-400 fw-bold fs-4'>
           Already have an account?
           <Link to='/auth/login' className='link-primary fw-bolder' style={{marginLeft: '5px'}}>
             Forgot Password ?
           </Link>
         </div>
-        {/* end::Link */}
       </div>
-      {/* end::Heading */}
 
 
 
@@ -109,92 +109,37 @@ export function Registration() {
         </div>
       )}
 
-      {/* begin::Form group Firstname */}
       <div className='row fv-row mb-7'>
-        <div className='col-xl-6'>
-          <label className='class="form-label fw-bolder text-dark fs-6'>First name</label>
-          <input
-            placeholder='First name'
-            type='text'
-            autoComplete='off'
-            {...formik.getFieldProps('firstname')}
-            className={clsx(
-              'form-control form-control-lg form-control-solid',
-              {
-                'is-invalid': formik.touched.firstname && formik.errors.firstname,
-              },
-              {
-                'is-valid': formik.touched.firstname && !formik.errors.firstname,
-              }
-            )}
-          />
-          {formik.touched.firstname && formik.errors.firstname && (
-            <div className='fv-plugins-message-container'>
-              <div className='fv-help-block'>
-                <span role='alert'>{formik.errors.firstname}</span>
-              </div>
-            </div>
-          )}
-        </div>
-        <div className='col-xl-6'>
-          {/* begin::Form group Lastname */}
-          <div className='fv-row mb-5'>
-            <label className='form-label fw-bolder text-dark fs-6'>Last name</label>
-            <input
-              placeholder='Last name'
-              type='text'
-              autoComplete='off'
-              {...formik.getFieldProps('lastname')}
-              className={clsx(
-                'form-control form-control-lg form-control-solid',
-                {
-                  'is-invalid': formik.touched.lastname && formik.errors.lastname,
-                },
-                {
-                  'is-valid': formik.touched.lastname && !formik.errors.lastname,
-                }
-              )}
-            />
-            {formik.touched.lastname && formik.errors.lastname && (
-              <div className='fv-plugins-message-container'>
-                <div className='fv-help-block'>
-                  <span role='alert'>{formik.errors.lastname}</span>
-                </div>
-              </div>
-            )}
-          </div>
-          {/* end::Form group */}
-        </div>
-      </div>
-      {/* end::Form group */}
-
-      {/* begin::Form group Email */}
-      <div className='fv-row mb-7'>
-        <label className='form-label fw-bolder text-dark fs-6'>Email</label>
-        <input
-          placeholder='Email'
-          type='email'
-          autoComplete='off'
-          {...formik.getFieldProps('email')}
-          className={clsx(
-            'form-control form-control-lg form-control-solid',
-            {'is-invalid': formik.touched.email && formik.errors.email},
-            {
-              'is-valid': formik.touched.email && !formik.errors.email,
-            }
-          )}
+        <InputField
+          title="First name"
+          autoComplete="off"
+          formik={formik}
+          formikTouched={formik.touched.firstname}
+          formikErrors={formik.errors.firstname}
+          formikTitle="firstname"
         />
-        {formik.touched.email && formik.errors.email && (
-          <div className='fv-plugins-message-container'>
-            <div className='fv-help-block'>
-              <span role='alert'>{formik.errors.email}</span>
-            </div>
-          </div>
-        )}
       </div>
-      {/* end::Form group */}
+      <div className='row fv-row mb-7'>
+        <InputField
+          title="Last name"
+          autoComplete="off"
+          formik={formik}
+          formikTouched={formik.touched.lastname}
+          formikErrors={formik.errors.lastname}
+          formikTitle="lastname"
+        />
+      </div>
+      <div className='row fv-row mb-7'>
+        <InputField
+          title="Email"
+          autoComplete="off"
+          formik={formik}
+          formikTouched={formik.touched.email}
+          formikErrors={formik.errors.email}
+          formikTitle="email"
+        />
+      </div>
 
-      {/* begin::Form group Password */}
       <div className='mb-10 fv-row' data-kt-password-meter='true'>
         <div className='mb-1'>
           <label className='form-label fw-bolder text-dark fs-6'>Password</label>
@@ -222,7 +167,6 @@ export function Registration() {
               </div>
             )}
           </div>
-          {/* begin::Meter */}
           <div
               className="d-flex align-items-center mb-3"
               data-kt-password-meter-control="highlight"
@@ -240,15 +184,12 @@ export function Registration() {
                 className="flex-grow-1 bg-secondary bg-active-success rounded h-5px"
             ></div>
           </div>
-          {/* end::Meter */}
         </div>
         <div className="text-muted">
           Use 8 or more characters with a mix of letters, numbers & symbols.
         </div>
       </div>
-      {/* end::Form group */}
 
-      {/* begin::Form group Confirm password */}
       <div className='fv-row mb-5'>
         <label className='form-label fw-bolder text-dark fs-6'>Confirm Password</label>
         <input
@@ -274,9 +215,7 @@ export function Registration() {
           </div>
         )}
       </div>
-      {/* end::Form group */}
 
-      {/* begin::Form group */}
       <div className='fv-row mb-10'>
         <div className='form-check form-check-custom form-check-solid'>
           <input
@@ -304,9 +243,7 @@ export function Registration() {
           )}
         </div>
       </div>
-      {/* end::Form group */}
 
-      {/* begin::Form group */}
       <div className='text-center'>
         <button
           type='submit'
@@ -332,7 +269,6 @@ export function Registration() {
           </button>
         </Link>
       </div>
-      {/* end::Form group */}
     </form>
   )
 }

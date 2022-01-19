@@ -1,0 +1,68 @@
+[
+    {
+        "icon": "/media/svg/brand-logos/plurk.svg",
+        "badgeColor": "primary",
+        "status": "In progress",
+        "statusColor": "primary",
+        "title": "Diversity & Inclusion Policy",
+        "description": "Internal Policy",
+        "date": "March 10, 2022",
+        "time": "35 minutes",
+        "progress": 50
+    },
+    {
+        "icon": "/media/svg/brand-logos/disqus.svg",
+        "badgeColor": "primary",
+        "status": "In progress",
+        "statusColor": "primary",
+        "title": "Data 2: Compliance",
+        "description": "Module",
+        "date": "January 10, 2022",
+        "time": "60 minutes",
+        "progress": 30
+    },
+    {
+        "icon": "/media/svg/brand-logos/figma-1.svg",
+        "badgeColor": "success",
+        "status": "Completed",
+        "statusColor": "success",
+        "title": "Net Neutrality",
+        "description": "Article",
+        "date": "Mar 14, 2021",
+        "time": "10 minutes",
+        "progress": 100
+    },
+    {
+        "icon": "/media/svg/brand-logos/sentry-3.svg",
+        "badgeColor": "success",
+        "status": "Completed",
+        "statusColor": "success",
+        "title": "Understanding Net Zero",
+        "description": "Module",
+        "date": "Mar 14, 2021",
+        "time": "35 minutes",
+        "progress": 100
+    },
+    {
+        "icon": "/media/svg/brand-logos/xing-icon.svg",
+        "badgeColor": "success",
+        "status": "Completed",
+        "statusColor": "success",
+        "title": "Privacy Policy",
+        "description": "External Policy",
+        "date": "Mar 14, 2021",
+        "time": "15 minutes",
+        "progress": 100
+    },
+    {
+        "icon": "/media/svg/brand-logos/tvit.svg",
+        "badgeColor": "danger",
+        "status": "Overdue",
+        "statusColor": "danger",
+        "title": "Vetting Supply Chain",
+        "description": "Module",
+        "date": "Mar 14, 2021",
+        "time": "60 minutes",
+        "progress": 100
+    }
+]
