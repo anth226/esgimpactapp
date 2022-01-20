@@ -3,13 +3,14 @@ import React, {useState, useEffect } from 'react'
 import {useDispatch} from 'react-redux'
 import {useFormik} from 'formik'
 import * as Yup from 'yup'
-import clsx from 'clsx'
 import * as auth from '../redux/AuthRedux'
 import {register} from '../redux/AuthCRUD'
 import {Link} from 'react-router-dom'
-import {toAbsoluteUrl} from '../../../../_metronic/helpers'
 import { PasswordMeterComponent } from "../../../../_metronic/assets/ts/components";
 import InputField from '../../../components/auth/InputField';
+import { Console } from 'console'
+import SubmitButton from '../../../components/auth/SubmitButton'
+import CancelButton from '../../../components/auth/CancelButtom'
 
 
 
@@ -77,8 +78,6 @@ export function Registration() {
     PasswordMeterComponent.bootstrap();
   }, []);
 
-  console.log(formik, 'formik');
-
   return (
     <form
       className='form w-100 fv-plugins-bootstrap5 fv-plugins-framework'
@@ -96,8 +95,6 @@ export function Registration() {
           </Link>
         </div>
       </div>
-
-
 
       <div className='d-flex align-items-center mb-10'>
         <div className='border-bottom border-gray-300 mw-100 w-100'></div>
@@ -117,6 +114,7 @@ export function Registration() {
           formikTouched={formik.touched.firstname}
           formikErrors={formik.errors.firstname}
           formikTitle="firstname"
+          type="text"
         />
       </div>
       <div className='row fv-row mb-7'>
@@ -127,6 +125,7 @@ export function Registration() {
           formikTouched={formik.touched.lastname}
           formikErrors={formik.errors.lastname}
           formikTitle="lastname"
+          type="text"
         />
       </div>
       <div className='row fv-row mb-7'>
@@ -137,53 +136,21 @@ export function Registration() {
           formikTouched={formik.touched.email}
           formikErrors={formik.errors.email}
           formikTitle="email"
+          type="text"
         />
       </div>
 
       <div className='mb-10 fv-row' data-kt-password-meter='true'>
         <div className='mb-1'>
-          <label className='form-label fw-bolder text-dark fs-6'>Password</label>
-          <div className='position-relative mb-3'>
-            <input
-              type='password'
-              placeholder='Password'
-              autoComplete='off'
-              {...formik.getFieldProps('password')}
-              className={clsx(
-                'form-control form-control-lg form-control-solid',
-                {
-                  'is-invalid': formik.touched.password && formik.errors.password,
-                },
-                {
-                  'is-valid': formik.touched.password && !formik.errors.password,
-                }
-              )}
-            />
-            {formik.touched.password && formik.errors.password && (
-              <div className='fv-plugins-message-container'>
-                <div className='fv-help-block'>
-                  <span role='alert'>{formik.errors.password}</span>
-                </div>
-              </div>
-            )}
-          </div>
-          <div
-              className="d-flex align-items-center mb-3"
-              data-kt-password-meter-control="highlight"
-          >
-            <div
-                className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"
-            ></div>
-            <div
-                className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"
-            ></div>
-            <div
-                className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"
-            ></div>
-            <div
-                className="flex-grow-1 bg-secondary bg-active-success rounded h-5px"
-            ></div>
-          </div>
+          <InputField
+            title="Password"
+            autoComplete="off"
+            formik={formik}
+            formikTouched={formik.touched.password}
+            formikErrors={formik.errors.password}
+            formikTitle="password"
+            type="password"
+          />
         </div>
         <div className="text-muted">
           Use 8 or more characters with a mix of letters, numbers & symbols.
@@ -191,29 +158,15 @@ export function Registration() {
       </div>
 
       <div className='fv-row mb-5'>
-        <label className='form-label fw-bolder text-dark fs-6'>Confirm Password</label>
-        <input
-          type='password'
-          placeholder='Password confirmation'
-          autoComplete='off'
-          {...formik.getFieldProps('changepassword')}
-          className={clsx(
-            'form-control form-control-lg form-control-solid',
-            {
-              'is-invalid': formik.touched.changepassword && formik.errors.changepassword,
-            },
-            {
-              'is-valid': formik.touched.changepassword && !formik.errors.changepassword,
-            }
-          )}
+      <InputField
+          title="Confirm Password"
+          autoComplete="off"
+          formik={formik}
+          formikTouched={formik.touched.changepassword}
+          formikErrors={formik.errors.changepassword}
+          formikTitle="changepassword"
+          type="text"
         />
-        {formik.touched.changepassword && formik.errors.changepassword && (
-          <div className='fv-plugins-message-container'>
-            <div className='fv-help-block'>
-              <span role='alert'>{formik.errors.changepassword}</span>
-            </div>
-          </div>
-        )}
       </div>
 
       <div className='fv-row mb-10'>
@@ -243,31 +196,24 @@ export function Registration() {
           )}
         </div>
       </div>
-
+      {console.log(formik, 'FORMIK')}
       <div className='text-center'>
-        <button
-          type='submit'
-          id='kt_sign_up_submit'
-          className='btn btn-lg btn-primary w-100 mb-5'
-          disabled={formik.isSubmitting || !formik.isValid || !formik.values.acceptTerms}
-        >
-          {!loading && <span className='indicator-label'>Submit</span>}
-          {loading && (
-            <span className='indicator-progress' style={{display: 'block'}}>
-              Please wait...{' '}
-              <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-            </span>
-          )}
-        </button>
-        <Link to='/auth/login'>
-          <button
-            type='button'
-            id='kt_login_signup_form_cancel_button'
-            className='btn btn-lg btn-light-primary w-100 mb-5'
-          >
-            Cancel
-          </button>
-        </Link>
+        <SubmitButton
+          isSubmitting={formik.isSubmitting}
+          isValid={formik.isValid}
+          acceptTerms={formik.values.acceptTerms}
+          loading={loading}
+          id="kt_sign_up_submit"
+          text="Submit"
+          className="btn btn-lg btn-primary w-100 mb-5"
+
+        />
+        <CancelButton
+          id="kt_login_signup_form_cancel_button"
+          linkPath="/auth/login"
+          text="Cancel"
+          className="btn btn-lg btn-light-primary w-100 mb-5"
+        />
       </div>
     </form>
   )
