@@ -1,18 +1,32 @@
 import React, {FC} from 'react';
 import clsx from 'clsx'
 import {InputFieldModel} from './models/InputFiledModel';
+import { Link } from 'react-router-dom';
 
-const InputField: FC<InputFieldModel> = ({title, formikTouched, autoComplete, formik, formikErrors, formikTitle}) => {
-    console.log(formik, 'formILL');
-    console.log(formikTitle, "Title");
-    
+const InputField: FC<InputFieldModel> = ({title, formikTouched, autoComplete, formik, formikErrors, formikTitle, type, lablePath}) => {
     return (
         <>
         <div className='col-xl-6'>
-          <label className='class="form-label fw-bolder text-dark fs-6'>{title}</label>
+          {lablePath ? (
+            <div className='d-flex justify-content-between mt-n5'>
+              <div className='d-flex flex-stack mb-2'>
+                <label className='form-label fw-bolder text-dark fs-6 mb-0'>Password</label>
+                <Link
+                  to='/auth/forgot-password'
+                  className='link-primary fs-6 fw-bolder'
+                  style={{marginLeft: '5px'}}
+                >
+                  Forgot Password ?
+                </Link>
+              </div>
+            </div>
+            ) : (
+            <label className='class="form-label fw-bolder text-dark fs-6 mb-3'>{title}</label>
+          )}
           <input
             placeholder={title}
-            type='text'
+            type={type}
+            name={formikTitle}
             autoComplete={autoComplete}
             {...formik.getFieldProps(`${formikTitle}`)}
             className={clsx(
@@ -33,9 +47,9 @@ const InputField: FC<InputFieldModel> = ({title, formikTouched, autoComplete, fo
             </div>
           )}
         </div>
-        {title === 'Password' &&
+        {title === 'Password' && !lablePath &&
             <div
-                className="d-flex align-items-center mb-3"
+                className="d-flex align-items-center mb-3 mt-3"
                 data-kt-password-meter-control="highlight"
             >
                 <div
