@@ -8,7 +8,7 @@ import {StatisticsWidget2} from '../../../_metronic/partials/widgets'
 import {Link} from 'react-router-dom'
 import {useLocation} from 'react-router'
 
-const MessageWrapper: FC = () => {
+const AnalystWrapper: FC = () => {
   const intl = useIntl()
 
   return (
@@ -116,4 +116,4 @@ const MessageWrapper: FC = () => {
   )
 }
 
-export {MessageWrapper}
+export {AnalystWrapper}

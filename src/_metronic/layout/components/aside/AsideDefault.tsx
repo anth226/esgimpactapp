@@ -23,9 +23,7 @@ const AsideDefault: FC = () => {
       data-kt-drawer-direction='start'
       data-kt-drawer-toggle='#kt_aside_mobile_toggle'
     >
-      {/* begin::Brand */}
       <div className='aside-logo flex-column-auto' id='kt_aside_logo'>
-        {/* begin::Logo */}
         {aside.theme === 'dark' && (
           <Link to='/dashboard'>
             <img
@@ -44,13 +42,12 @@ const AsideDefault: FC = () => {
             />
           </Link>
         )}
-        {/* end::Logo */}
 
-        {/* begin::Aside toggler */}
         {aside.minimize && (
           <div
             id='kt_aside_toggle'
             className='btn btn-icon btn-active-color-primary w-auto px-0 aside-toggle'
+            style={{background: '#fff'}}
             data-kt-toggle='true'
             data-kt-toggle-state='active'
             data-kt-toggle-target='body'
@@ -62,17 +59,12 @@ const AsideDefault: FC = () => {
             />
           </div>
         )}
-        {/* end::Aside toggler */}
       </div>
-      {/* end::Brand */}
 
-      {/* begin::Aside menu */}
       <div className='aside-menu flex-column-fluid'>
         <AsideMenu asideMenuCSSClasses={classes.asideMenu} />
       </div>
-      {/* end::Aside menu */}
 
-      {/* begin::Footer */}
       <div className='aside-footer flex-column-auto pt-5 pb-7 px-5' id='kt_aside_footer'>
         <a
           target='#'
@@ -83,10 +75,9 @@ const AsideDefault: FC = () => {
           data-bs-dismiss-='click'
           title='Lorem ipsum dolor sit amet, consectetur adipisicing elit'
         >
-          <span className='btn-label'>Beta 0.1</span>
+          <span className='btn-label'>Currently in Beta</span>         
         </a>
       </div>
-      {/* end::Footer */}
     </div>
   )
 }

@@ -3,8 +3,7 @@ import {Redirect, Route, Switch} from 'react-router-dom'
 import {FallbackView} from '../../_metronic/partials'
 import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
 import {BenchmarkWrapper} from '../pages/benchmark/BenchmarkWrapper'
-import {MessageWrapper} from '../pages/message/MessageWrapper'
-import {ScheduleWrapper} from '../pages/schedule/ScheduleWrapper'
+import {AnalystWrapper} from '../pages/analyst/AnalystWrapper'
 import {Module} from '../resources/modules/module'
 
 export function PrivateRoutes() {
@@ -18,8 +17,7 @@ export function PrivateRoutes() {
         <Route path='/benchmark' component={BenchmarkWrapper} />
 
         {/* Resources */}
-        <Route path='/message' component={MessageWrapper} />
-        <Route path='/schedule' component={ScheduleWrapper} />
+        <Route path='/analyst' component={AnalystWrapper} />
         <Route path='/module' component={Module} />
 
         {/* Other */}

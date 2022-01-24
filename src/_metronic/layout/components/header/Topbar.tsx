@@ -53,7 +53,7 @@ const Topbar: FC = () => {
               className={toolbarButtonIconSizeClass}
             />
           </div>
-          <QuickLinks />
+          <HeaderNotificationsMenu />
           {/* end::Menu wrapper */}
         </div>
 
@@ -74,28 +74,6 @@ const Topbar: FC = () => {
 
             <span className='bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink'></span>
           </div>
-          {/* end::Menu wrapper */}
-        </div>
-
-        {/* NOTIFICATIONS */}
-        <div className={clsx('d-flex align-items-center', toolbarButtonMarginClass)}>
-          {/* begin::Menu- wrapper */}
-          <div
-            className={clsx(
-              'btn btn-icon btn-active-light-primary position-relative',
-              toolbarButtonHeightClass
-            )}
-            data-kt-menu-trigger='click'
-            data-kt-menu-attach='parent'
-            data-kt-menu-placement='bottom-end'
-            data-kt-menu-flip='bottom'
-          >
-            <KTSVG
-              path='/media/icons/duotune/general/gen022.svg'
-              className={toolbarButtonIconSizeClass}
-            />
-          </div>
-          <HeaderNotificationsMenu />
           {/* end::Menu wrapper */}
         </div>
 
