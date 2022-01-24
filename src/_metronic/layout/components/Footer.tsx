@@ -21,7 +21,7 @@ const Footer: FC = () => {
 
         {/* begin::Middle */}
         <div className='order-2'>
-          <div className='text-muted'>Made with <strong className='text-primary'>♥</strong> by the Dev Team at ESGi.</div>
+          <div className='text-muted'>Made with <strong className='text-secondary'>♥</strong> by the Dev Team at ESGi.</div>
         </div>
         {/* end::Middle */}
 
@@ -39,7 +39,7 @@ const Footer: FC = () => {
           </li>
           <li className='menu-item'>
             <a href='#' className='menu-link pe-0'>
-              Purchase
+              Privacy Policy
             </a>
           </li>
         </ul>

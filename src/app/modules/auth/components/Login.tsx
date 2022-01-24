@@ -72,7 +72,7 @@ export function Login() {
         </div>
       </div>
 
-      {formik.status ? (
+      {/* {formik.status ? (
         <div className='mb-lg-15 alert alert-danger'>
           <div className='alert-text font-weight-bold'>{formik.status}</div>
         </div>
@@ -83,7 +83,7 @@ export function Login() {
             continue.
           </div>
         </div>
-      )}
+      )} */}
 
       <div className='fv-row mb-10'>
         <InputField

@@ -23,19 +23,24 @@ export function AsideMenuMain() {
         title={intl.formatMessage({id: 'MENU.DASHBOARD'})}
         fontIcon='bi-app-indicator'
       />
+      <div className='menu-item'>
+        <div className='menu-content pt-8 pb-2'>
+          <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Assessments</span>
+        </div>
+      </div>
+      <AsideMenuItem
+        to='#'
+        icon='/media/icons/duotune/abstract/abs027.svg'
+        title='Materiality Matrix'
+        fontIcon='bi-layers'
+      />
       <AsideMenuItem
         to='#'
         icon='/media/icons/duotune/abstract/abs014.svg'
         title='Impact Rating'
         fontIcon='bi-layers'
       />
-      <AsideMenuItem
-        to="/benchmark"
-        title='Benchmark'
-        fontIcon='bi-archive'
-        icon='/media/icons/duotune/graphs/gra001.svg'
-      >
-      </AsideMenuItem>
+      
 
       <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>
@@ -53,15 +58,19 @@ export function AsideMenuMain() {
         <AsideMenuItem to='#' title='Templates' hasBullet={true} />
       </AsideMenuItemWithSub>
 
-      <AsideMenuItemWithSub
-        to='#'
+      <AsideMenuItem
+        to="/benchmark"
+        title='Benchmark (Coming Soon)'
+        fontIcon='bi-archive'
+        icon='/media/icons/duotune/graphs/gra001.svg'
+      />
+
+      <AsideMenuItem
+        to='/message'
         title='Analyst Contact'
         fontIcon='bi-chat-left'
         icon='/media/icons/duotune/communication/com006.svg'
-      >
-        <AsideMenuItem to='/schedule' title='Schedule Meeting' hasBullet={true} />
-        <AsideMenuItem to='/message' title='Message' hasBullet={true} />
-      </AsideMenuItemWithSub>
+      />
 
       <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>
