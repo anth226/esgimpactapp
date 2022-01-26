@@ -9,6 +9,7 @@ import {register} from '../redux/AuthCRUD'
 import {Link} from 'react-router-dom'
 import {toAbsoluteUrl} from '../../../../_metronic/helpers'
 import { PasswordMeterComponent } from "../../../../_metronic/assets/ts/components";
+import InputField from '../../../components/auth/InputField'
 
 const initialValues = {
   firstname: '',
@@ -109,80 +110,40 @@ export function Registration() {
         </div>
       )}
 
-      {/* begin::Form group Firstname */}
-      <div className='row fv-row mb-7'>
-        <div className='col-xl-6'>
-          <label className='class="form-label fw-bolder text-dark fs-6'>First name</label>
-          <input
-            placeholder='First name'
-            type='text'
-            autoComplete='off'
-            {...formik.getFieldProps('firstname')}
-            className={clsx(
-              'form-control form-control-lg form-control-solid',
-              {
-                'is-invalid': formik.touched.firstname && formik.errors.firstname,
-              },
-              {
-                'is-valid': formik.touched.firstname && !formik.errors.firstname,
-              }
-            )}
-          />
-          {formik.touched.firstname && formik.errors.firstname && (
-            <div className='fv-plugins-message-container'>
-              <div className='fv-help-block'>
-                <span role='alert'>{formik.errors.firstname}</span>
-              </div>
-            </div>
-          )}
-        </div>
-        <div className='col-xl-6'>
-          {/* begin::Form group Lastname */}
-          <div className='fv-row mb-5'>
-            <label className='form-label fw-bolder text-dark fs-6'>Last name</label>
-            <input
-              placeholder='Last name'
-              type='text'
-              autoComplete='off'
-              {...formik.getFieldProps('lastname')}
-              className={clsx(
-                'form-control form-control-lg form-control-solid',
-                {
-                  'is-invalid': formik.touched.lastname && formik.errors.lastname,
-                },
-                {
-                  'is-valid': formik.touched.lastname && !formik.errors.lastname,
-                }
-              )}
-            />
-            {formik.touched.lastname && formik.errors.lastname && (
-              <div className='fv-plugins-message-container'>
-                <div className='fv-help-block'>
-                  <span role='alert'>{formik.errors.lastname}</span>
-                </div>
-              </div>
-            )}
-          </div>
-          {/* end::Form group */}
-        </div>
+      <div className='row fv-row mb-2'>
+        <InputField
+          title="First name"
+          autoComplete="off"
+          formik={formik}
+          className="position-relative mb-3"
+          formikTouched={formik.touched.firstname}
+          formikErrors={formik.errors.firstname}
+          formikTitle="firstname"
+          type="text"
+        />
       </div>
-      {/* end::Form group */}
-
-      {/* begin::Form group Email */}
-      <div className='fv-row mb-7'>
-        <label className='form-label fw-bolder text-dark fs-6'>Email</label>
-        <input
-          placeholder='Email'
-          type='email'
-          autoComplete='off'
-          {...formik.getFieldProps('email')}
-          className={clsx(
-            'form-control form-control-lg form-control-solid',
-            {'is-invalid': formik.touched.email && formik.errors.email},
-            {
-              'is-valid': formik.touched.email && !formik.errors.email,
-            }
-          )}
+      <div className='row fv-row mb-2'>
+        <InputField
+          title="Last name"
+          className="position-relative mb-3"
+          autoComplete="off"
+          formik={formik}
+          formikTouched={formik.touched.lastname}
+          formikErrors={formik.errors.lastname}
+          formikTitle="lastname"
+          type="text"
+        />
+      </div>
+      <div className='row fv-row mb-2'>
+        <InputField
+          title="Email"
+          autoComplete="off"
+          className="position-relative mb-3"
+          formik={formik}
+          formikTouched={formik.touched.email}
+          formikErrors={formik.errors.email}
+          formikTitle="email"
+          type="text"
         />
         {formik.touched.email && formik.errors.email && (
           <div className='fv-plugins-message-container'>
@@ -197,50 +158,16 @@ export function Registration() {
       {/* begin::Form group Password */}
       <div className='mb-10 fv-row' data-kt-password-meter='true'>
         <div className='mb-1'>
-          <label className='form-label fw-bolder text-dark fs-6'>Password</label>
-          <div className='position-relative mb-3'>
-            <input
-              type='password'
-              placeholder='Password'
-              autoComplete='off'
-              {...formik.getFieldProps('password')}
-              className={clsx(
-                'form-control form-control-lg form-control-solid',
-                {
-                  'is-invalid': formik.touched.password && formik.errors.password,
-                },
-                {
-                  'is-valid': formik.touched.password && !formik.errors.password,
-                }
-              )}
-            />
-            {formik.touched.password && formik.errors.password && (
-              <div className='fv-plugins-message-container'>
-                <div className='fv-help-block'>
-                  <span role='alert'>{formik.errors.password}</span>
-                </div>
-              </div>
-            )}
-          </div>
-          {/* begin::Meter */}
-          <div
-              className="d-flex align-items-center mb-3"
-              data-kt-password-meter-control="highlight"
-          >
-            <div
-                className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"
-            ></div>
-            <div
-                className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"
-            ></div>
-            <div
-                className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"
-            ></div>
-            <div
-                className="flex-grow-1 bg-secondary bg-active-success rounded h-5px"
-            ></div>
-          </div>
-          {/* end::Meter */}
+          <InputField
+            className="position-relative mb-3"
+            title="Password"
+            autoComplete="off"
+            formik={formik}
+            formikTouched={formik.touched.password}
+            formikErrors={formik.errors.password}
+            formikTitle="password"
+            type="password"
+          />
         </div>
         <div className="text-muted">
           Use 8 or more characters with a mix of letters, numbers & symbols.
@@ -248,23 +175,16 @@ export function Registration() {
       </div>
       {/* end::Form group */}
 
-      {/* begin::Form group Confirm password */}
-      <div className='fv-row mb-5'>
-        <label className='form-label fw-bolder text-dark fs-6'>Confirm Password</label>
-        <input
-          type='password'
-          placeholder='Password confirmation'
-          autoComplete='off'
-          {...formik.getFieldProps('changepassword')}
-          className={clsx(
-            'form-control form-control-lg form-control-solid',
-            {
-              'is-invalid': formik.touched.changepassword && formik.errors.changepassword,
-            },
-            {
-              'is-valid': formik.touched.changepassword && !formik.errors.changepassword,
-            }
-          )}
+      <div className='fv-row mb-2'>
+        <InputField
+          title="Confirm Password"
+          autoComplete="off"
+          className="position-relative mb-3"
+          formik={formik}
+          formikTouched={formik.touched.changepassword}
+          formikErrors={formik.errors.changepassword}
+          formikTitle="changepassword"
+          type="text"
         />
         {formik.touched.changepassword && formik.errors.changepassword && (
           <div className='fv-plugins-message-container'>

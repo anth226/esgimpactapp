@@ -25,7 +25,6 @@ const AsideMenuItem: React.FC<Props> = ({
   const isActive = checkIsActive(pathname, to)
   const {config} = useLayout()
   const {aside} = config
-
   return (
     <div className='menu-item'>
       <Link className={clsx('menu-link without-sub', {active: isActive})} to={to}>
