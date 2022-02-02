@@ -9,6 +9,7 @@ import {Link} from 'react-router-dom'
 import {useLocation} from 'react-router'
 import DashboardPage from './DashboardPage'
 
+
 const DashboardWrapper: FC = () => {
   const intl = useIntl()
 

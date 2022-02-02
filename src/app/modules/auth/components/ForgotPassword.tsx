@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
-import * as Yup from 'yup';
-import {useFormik} from 'formik';
-import {requestPassword} from '../redux/AuthCRUD';
-import InputField from '../../../components/auth/InputField';
-import CancelButton from '../../../components/auth/CancelButtom';
-import SubmitButton from '../../../components/auth/SubmitButton';
+import React, {useState} from 'react'
+import * as Yup from 'yup'
+import {useFormik} from 'formik'
+import {requestPassword} from '../redux/AuthCRUD'
+import InputField from '../../../components/auth/InputField'
+import CancelButton from '../../../components/auth/CancelButtom'
+import SubmitButton from '../../../components/auth/SubmitButton'
 
 const initialValues = {
   email: 'admin@demo.com',
@@ -44,7 +44,7 @@ export function ForgotPassword() {
   })
 
   return (
-    <>
+    <div className='w-lg-500px bg-white rounded shadow-sm p-10 p-lg-15 mx-auto'>
       <form
         className='form w-100 fv-plugins-bootstrap5 fv-plugins-framework'
         noValidate
@@ -72,32 +72,32 @@ export function ForgotPassword() {
 
         <div className='fv-row mb-10'>
           <InputField
-            type="email"
-            autoComplete="off"
+            type='email'
+            autoComplete='off'
             formikTouched={formik.touched.email}
             formikErrors={formik.errors.email}
-            title="Email"
-            formikTitle="email"
+            title='Email'
+            formikTitle='email'
             formik={formik}
           />
         </div>
 
         <div className='d-flex flex-wrap justify-content-center pb-lg-0'>
           <SubmitButton
-            text="Submit"
-            id="kt_password_reset_submit"
-            className="btn btn-lg btn-primary fw-bolder me-4"
+            text='Submit'
+            id='kt_password_reset_submit'
+            className='btn btn-lg btn-primary fw-bolder me-4'
             loading={loading}
           />
           <CancelButton
-            linkPath="/auth/login"
-            id="kt_login_password_reset_form_cancel_button"
-            className="btn btn-lg btn-light-primary fw-bolder"
+            linkPath='/auth/login'
+            id='kt_login_password_reset_form_cancel_button'
+            className='btn btn-lg btn-light-primary fw-bolder'
             disable={formik.isSubmitting || !formik.isValid}
-            text="Cancel"
+            text='Cancel'
           />
         </div>
       </form>
-    </>
+    </div>
   )
 }

@@ -7,7 +7,7 @@ export default function setupAxios(axios: any, store: any) {
       } = store.getState()
 
       if (api_token) {
-        config.headers.Authorization = `Bearer ${api_token}`
+        config.headers.Authorization = api_token
       }
 
       return config

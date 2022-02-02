@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {FC} from 'react'
 import {Link} from 'react-router-dom'
-import {IconUserModel} from '../../../../app/modules/profile/ProfileModels'
+import {UserModel} from '../../../../app/modules/auth/models/UserModel'
 import {UsersList} from '../../../../app/modules/profile/components/UsersList'
 import {toAbsoluteUrl} from '../../../helpers'
 
@@ -15,7 +15,7 @@ type Props = {
   date: string
   time: string
   progress: number
-  users?: Array<IconUserModel>
+  users?: Array<UserModel>
 }
 
 const Card2: FC<Props> = ({

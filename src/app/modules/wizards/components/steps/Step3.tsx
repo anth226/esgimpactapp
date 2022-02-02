@@ -70,7 +70,7 @@ const Step3: FC = () => {
 
         <Field
           as='textarea'
-          name='businessDescription'
+          name='description'
           className='form-control form-control-lg form-control-solid'
           rows={3}
         ></Field>

@@ -1,10 +1,10 @@
 import {FC} from 'react'
-import {IconUserModel} from '../ProfileModels'
+import {UserModel} from '../../auth/models/UserModel'
 import {toAbsoluteUrl} from '../../../../_metronic/helpers'
 import {OverlayTrigger, Tooltip} from 'react-bootstrap-v5'
 
 type Props = {
-  users?: Array<IconUserModel>
+  users?: Array<UserModel>
 }
 
 const UsersList: FC<Props> = ({users = undefined}) => {
@@ -14,15 +14,17 @@ const UsersList: FC<Props> = ({users = undefined}) => {
         users.map((user, i) => {
           return (
             <OverlayTrigger
-              key={`${i}-${user.name}`}
+              key={`${i}-${user}`}
               placement='top'
-              overlay={<Tooltip id='tooltip-user-name'>{user.name}</Tooltip>}
+              overlay={<Tooltip id='tooltip-user-name'>{user.profile?.first_name}</Tooltip>}
             >
               <div className='symbol symbol-35px symbol-circle'>
-                {user.avatar && <img src={toAbsoluteUrl(user.avatar)} alt='Pic' />}
-                {user.initials && (
+                {user.profile?.picture && (
+                  <img src={toAbsoluteUrl(user.profile?.picture)} alt='Pic' />
+                )}
+                {user.email && (
                   <span className='symbol-label bg-primary text-inverse-primary fw-bolder'>
-                    {user.initials}
+                    {user.email}
                   </span>
                 )}
               </div>

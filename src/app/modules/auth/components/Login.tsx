@@ -2,12 +2,11 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import * as Yup from 'yup'
+import clsx from 'clsx'
 import {Link} from 'react-router-dom'
 import {useFormik} from 'formik'
 import * as auth from '../redux/AuthRedux'
 import {login} from '../redux/AuthCRUD'
-import InputField from '../../../components/auth/InputField'
-import SubmitButton from '../../../components/auth/SubmitButton'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -56,70 +55,124 @@ export function Login() {
   })
 
   return (
-    <form
-      className='form w-100'
-      onSubmit={formik.handleSubmit}
-      noValidate
-      id='kt_login_signin_form'
-    >
-      <div className='text-center mb-10'>
-        <h1 className='text-dark mb-3'>Sign In to ESG Impact</h1>
-        <div className='text-gray-400 fw-bold fs-4'>
-          New Here?{' '}
-          <Link to='/auth/registration' className='link-primary fw-bolder'>
-            Create an Account
-          </Link>
-        </div>
-      </div>
-
-      {/* {formik.status ? (
-        <div className='mb-lg-15 alert alert-danger'>
-          <div className='alert-text font-weight-bold'>{formik.status}</div>
-        </div>
-      ) : (
-        <div className='mb-10 bg-light p-8 rounded'>
-          <div className='text-info'>
-            Use account <strong>admin@demo.com</strong> and password <strong>demo</strong> to
-            continue.
+    <div className='w-lg-500px bg-white rounded shadow-sm p-10 p-lg-15 mx-auto'>
+      <form
+        className='form w-100'
+        onSubmit={formik.handleSubmit}
+        noValidate
+        id='kt_login_signin_form'
+      >
+        {/* begin::Heading */}
+        <div className='text-center mb-10'>
+          <h1 className='text-dark mb-3'>Sign In to ESG Impact</h1>
+          <div className='text-gray-400 fw-bold fs-4'>
+            New Here?{' '}
+            <Link to='/auth/registration' className='link-primary fw-bolder'>
+              Create an Account
+            </Link>
           </div>
         </div>
-      )} */}
+        {/* begin::Heading */}
 
-      <div className='fv-row mb-10'>
-        <InputField
-          title="Email"
-          autoComplete="off"
-          formik={formik}
-          formikTouched={formik.touched.email}
-          formikErrors={formik.errors.email}
-          formikTitle="email"
-          type="email"
-        />
-      </div>
+        {formik.status ? (
+          <div className='mb-lg-15 alert alert-danger'>
+            <div className='alert-text font-weight-bold'>{formik.status}</div>
+          </div>
+        ) : (
+          <div className='mb-10 bg-light p-8 rounded'>
+            <div className='text-info'>
+              Use account <strong>admin@demo.com</strong> and password <strong>demo</strong> to
+              continue.
+            </div>
+          </div>
+        )}
 
-      <div className='fv-row mb-10'>
-        <InputField
-          title="Password"
-          autoComplete="off"
-          formik={formik}
-          formikTouched={formik.touched.password}
-          formikErrors={formik.errors.password}
-          formikTitle="password"
-          type="password"
-          lablePath="/auth/forgot-password"
-        />
-      </div>
+        {/* begin::Form group */}
+        <div className='fv-row mb-10'>
+          <label className='form-label fs-6 fw-bolder text-dark'>Email</label>
+          <input
+            placeholder='Email'
+            {...formik.getFieldProps('email')}
+            className={clsx(
+              'form-control form-control-lg form-control-solid',
+              {'is-invalid': formik.touched.email && formik.errors.email},
+              {
+                'is-valid': formik.touched.email && !formik.errors.email,
+              }
+            )}
+            type='email'
+            name='email'
+            autoComplete='off'
+          />
+          {formik.touched.email && formik.errors.email && (
+            <div className='fv-plugins-message-container'>
+              <span role='alert'>{formik.errors.email}</span>
+            </div>
+          )}
+        </div>
+        {/* end::Form group */}
 
-      <div className='text-center'>
-        <SubmitButton
-          id="kt_sign_in_submit"
-          isSubmitting={formik.isSubmitting}
-          isValid={formik.isValid}
-          text="Continue"
-          loading={loading}
-          className="btn btn-lg btn-primary w-100 mb-5"
-        />
-      </div>
-    </form>
+        {/* begin::Form group */}
+        <div className='fv-row mb-10'>
+          <div className='d-flex justify-content-between mt-n5'>
+            <div className='d-flex flex-stack mb-2'>
+              {/* begin::Label */}
+              <label className='form-label fw-bolder text-dark fs-6 mb-0'>Password</label>
+              {/* end::Label */}
+              {/* begin::Link */}
+              <Link
+                to='/auth/forgot-password'
+                className='link-primary fs-6 fw-bolder'
+                style={{marginLeft: '5px'}}
+              >
+                Forgot Password ?
+              </Link>
+              {/* end::Link */}
+            </div>
+          </div>
+          <input
+            type='password'
+            autoComplete='off'
+            {...formik.getFieldProps('password')}
+            className={clsx(
+              'form-control form-control-lg form-control-solid',
+              {
+                'is-invalid': formik.touched.password && formik.errors.password,
+              },
+              {
+                'is-valid': formik.touched.password && !formik.errors.password,
+              }
+            )}
+          />
+          {formik.touched.password && formik.errors.password && (
+            <div className='fv-plugins-message-container'>
+              <div className='fv-help-block'>
+                <span role='alert'>{formik.errors.password}</span>
+              </div>
+            </div>
+          )}
+        </div>
+        {/* end::Form group */}
+
+        {/* begin::Action */}
+        <div className='text-center'>
+          <button
+            type='submit'
+            id='kt_sign_in_submit'
+            className='btn btn-lg btn-primary w-100 mb-5'
+            disabled={formik.isSubmitting || !formik.isValid}
+          >
+            {!loading && <span className='indicator-label'>Continue</span>}
+            {loading && (
+              <span className='indicator-progress' style={{display: 'block'}}>
+                Please wait...
+                <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+              </span>
+            )}
+          </button>
+        </div>
+        {/* end::Action */}
+      </form>
+    </div>
   )
 }
