@@ -22,7 +22,6 @@ const Routes: FC = () => {
     <>
       <Switch>
         {!isAuthorized ? (
-          /*Render auth page when user at `/auth` and not authorized.*/
           <Route>
             <AuthPage />
           </Route>

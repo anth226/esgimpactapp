@@ -10,5 +10,6 @@ export interface InputFieldModel {
     formik: FormikModel,
     formikTouched?: boolean,
     type: string,
-    lablePath?: string 
+    lablePath?: string,
+    className?: string,
 }

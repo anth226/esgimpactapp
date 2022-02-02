@@ -3,10 +3,10 @@ import clsx from 'clsx'
 import {InputFieldModel} from './models/InputFiledModel';
 import { Link } from 'react-router-dom';
 
-const InputField: FC<InputFieldModel> = ({title, formikTouched, autoComplete, formik, formikErrors, formikTitle, type, lablePath}) => {
+const InputField: FC<InputFieldModel> = ({title, formikTouched, autoComplete, formik, formikErrors, formikTitle, type, lablePath, className}) => {
     return (
         <>
-        <div className='col-xl-6'>
+        <div className={className}>
           {lablePath ? (
             <div className='d-flex justify-content-between mt-n5'>
               <div className='d-flex flex-stack mb-2'>

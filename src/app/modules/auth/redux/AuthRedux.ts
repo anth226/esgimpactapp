@@ -3,7 +3,7 @@ import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import {put, takeLatest, select} from 'redux-saga/effects'
 import {UserModel} from '../models/UserModel'
-import {getUserByToken} from "./AuthCRUD";
+import {getUserByToken} from './AuthCRUD'
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T
@@ -16,16 +16,19 @@ export const actionTypes = {
   UserRequested: '[Request User] Action',
   UserLoaded: '[Load User] Auth API',
   SetUser: '[Set User] Action',
+  SetUserID: '[Set User ID] Action',
 }
 
 const initialAuthState: IAuthState = {
   user: undefined,
   api_token: undefined,
+  _id: undefined,
 }
 
 export interface IAuthState {
   user?: UserModel
   api_token?: string
+  _id?: string
 }
 
 export const reducer = persistReducer(
@@ -56,6 +59,11 @@ export const reducer = persistReducer(
         return {...state, user}
       }
 
+      case actionTypes.SetUserID: {
+        const _id = action.payload?._id
+        return {...state, _id}
+      }
+
       default:
         return state
     }
@@ -74,7 +82,8 @@ export const actions = {
   }),
   fulfillUser: (user: UserModel) => ({type: actionTypes.UserLoaded, payload: {user}}),
   setUser: (user: UserModel) => ({type: actionTypes.SetUser, payload: {user}}),
-  store: () => ({type: "def"}),
+  setUserID: (_id: string) => ({type: actionTypes.SetUserID, payload: {_id}}),
+  store: () => ({type: 'def'}),
 }
 
 export function* saga() {
@@ -88,10 +97,10 @@ export function* saga() {
 
   yield takeLatest(actionTypes.UserRequested, function* userRequested() {
     // @ts-ignore
-    const getToken = (state) => state.auth.api_token;
+    const getToken = (state) => state.auth.api_token
     // @ts-ignore
     let token = yield select(getToken)
     const {data: user} = yield getUserByToken(token)
-    yield put(actions.fulfillUser(user))
+    yield put(actions.fulfillUser(user.user))
   })
 }

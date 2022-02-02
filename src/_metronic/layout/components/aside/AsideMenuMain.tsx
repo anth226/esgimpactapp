@@ -58,12 +58,12 @@ export function AsideMenuMain() {
         <AsideMenuItem to='#' title='Templates' hasBullet={true} />
       </AsideMenuItemWithSub>
 
-      <AsideMenuItem
+      {/* <AsideMenuItem
         to="/benchmark"
         title='Benchmark (Coming Soon)'
         fontIcon='bi-archive'
         icon='/media/icons/duotune/graphs/gra001.svg'
-      />
+      /> */}
 
       <AsideMenuItem
         to='/message'
@@ -72,7 +72,7 @@ export function AsideMenuMain() {
         icon='/media/icons/duotune/communication/com006.svg'
       />
 
-      <div className='menu-item'>
+      {/* <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>
           <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Community</span>
         </div>
@@ -92,7 +92,7 @@ export function AsideMenuMain() {
         fontIcon='bi-chat-left'
         icon='/media/icons/duotune/communication/com005.svg'
       >
-      </AsideMenuItem>
+      </AsideMenuItem> */}
 
       <div className='menu-item'>
         <div className='menu-content'>
@@ -110,6 +110,7 @@ export function AsideMenuMain() {
           <span className='menu-title'>Settings</span>
         </a>
       </div>
+      
       <div className='menu-item'>
         <a
           target='#'
@@ -121,6 +122,15 @@ export function AsideMenuMain() {
           <span className='menu-title'>FAQs</span>
         </a>
       </div>
+
+      <AsideMenuItem
+        to="/sitemap"
+        title='Sitemap'
+        fontIcon='bi-archive'
+        icon='/media/icons/duotune/files/fil020.svg'
+      />
+
+
       <div className='menu-item'>
         <a
           target='#'
