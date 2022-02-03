@@ -12,6 +12,7 @@ export const REQUEST_PASSWORD_URL = `${API_URL}/auth/forgot-password`
 export const VERIFY_USER_URL = `${API_URL}/auth/verify`
 export const CREATE_COMPANY_URL = `${API_URL}/company/create`
 export const CREATE_FUND_URL = `${API_URL}/fund/create`
+export const RESET_PASSWORD = `${API_URL}/auth/reset-password`
 
 // Server should return AuthModel
 export function login(email: string, password: string) {
@@ -38,6 +39,12 @@ export function register(
     position,
     type,
   })
+}
+
+// Server should change the password
+export function resetPassword(token: string, password: string) {
+  console.log(token, password)
+  return axios.post(`${RESET_PASSWORD}/${token}`, {password: password})
 }
 
 // Server should return object => { result: boolean } (Is Email in DB)
