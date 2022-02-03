@@ -5,17 +5,32 @@ const Company2: FC = () => {
   return (
     <div className='w-100'>
       <div className='pb-10 pb-lg-15'>
-        <h2 className='fw-bolder text-dark'>Information</h2>
+        <h2 className='fw-bolder text-dark'>Information
+          <i
+              className='fas fa-exclamation-circle ms-2 fs-7'
+              data-bs-toggle='tooltip'
+              title='Provide your basic company information.'
+          ></i>
+        </h2>
+        <div className='text-gray-400 fw-bold fs-6'>
+          For more help, check out our 
+          <a href='#' className='link-primary fw-bolder'>
+            {' '}
+            example
+          </a>
+          .
+        </div>
       </div>
 
       <div className='fv-row mb-10'>
         <label className='form-label mb-3'>
-          What is the Assumed Name and Legal Name of your organization?
+          What is the <a className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+            Assumed Name
+          </a> and <a href='#' className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+            Legal Name
+          </a> of your organization?
         </label>
-        <i
-          className='fas fa-exclamation-circle ms-2 fs-7'
-          data-bs-toggle='tooltip'
-        ></i>
+
         <Field
           type='text'
           className='form-control form-control form-control-solid mb-5'
@@ -43,7 +58,10 @@ const Company2: FC = () => {
       </div>
 
       <div className='fv-row mb-10'>
-        <label className='form-label'>What is your legal formation?</label>
+        <label className='form-label'>
+          What is your <a href='#' className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+          legal formation</a>?
+        </label>
 
         <Field
           as='select'
@@ -80,7 +98,9 @@ const Company2: FC = () => {
       </div>
       
       <div className='fv-row mb-10'>
-        <label className='form-label mb-3'>What is your mission statement or statement of purpose?</label>
+        <label className='form-label mb-3'>What is your <a className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+          mission statement</a> or statement of purpose?
+        </label>
 
         <Field
           as='textarea'

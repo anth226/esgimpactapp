@@ -2,7 +2,7 @@
 import React, {FC} from 'react'
 import {useFormik} from 'formik'
 
-const Company1: FC = () => {
+const Fund1: FC = () => {
   return (
     <div className='w-100'>
       <div className='pb-10 pb-lg-15'>
@@ -22,7 +22,7 @@ const Company1: FC = () => {
 
       <div className='fv-row mb-3'>
         <label className='form-label mb-3'>
-          We understand that your company information is private, especially when it comes to ESG reporting. We will not sell your submitted information or use it outside of our regular operations as outlined in our
+          We understand that your information is private, especially when it comes to ESG reporting. We will not sell your submitted information or use it outside of our regular operations as outlined in our
           <a href='#' className='link-primary fw-bolder'> terms & conditions
           </a> and
           <a href='#' className='link-primary fw-bolder'> privacy policy</a>.
@@ -56,4 +56,4 @@ const Company1: FC = () => {
   )
 }
 
-export {Company1}
+export {Fund1}

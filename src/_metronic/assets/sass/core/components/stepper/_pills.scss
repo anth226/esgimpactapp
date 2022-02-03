@@ -26,7 +26,7 @@
       width: $pills-size;
       height: $pills-size;
       border-radius: $border-radius;
-      background-color: $primary-light;
+      background-color: $gray-200; // Adam Jace // Changed from $primary-light
       margin-right: 1.5rem;
 
       .stepper-check {
@@ -94,7 +94,7 @@
     &.completed {
       .stepper-icon {
         transition: $transition-link;
-        background-color: $primary-light;
+        background-color: $gray-200; // Adam Jace // changed from $primary-light
 
         .stepper-check {
           color: $primary !important;

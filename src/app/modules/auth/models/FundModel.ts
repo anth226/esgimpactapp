@@ -7,7 +7,7 @@ export interface FundModel {
   description: string
   mission_statement: string
   website: string
-  sics_codes: string
+  primary_industry: string
   number_employees: string
   primary_address: string
   other_addresses: string

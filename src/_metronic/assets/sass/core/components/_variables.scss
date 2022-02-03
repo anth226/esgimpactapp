@@ -66,9 +66,10 @@ $dark-light: $gray-200 !default; // Custom variable
 $dark-inverse: if(isDarkMode(), $gray-100, $white) !default; // Custom variable
 
 // Primary colors
-$primary: #3699ff !default; // Bootstrap variable
-$primary-active: #187de4 !default; // Custom variable
-$primary-light: if(isDarkMode(), #212e48, #f1faff) !default; // Custom variable
+// Adam Jace // Edited to ESGi Navy
+$primary: #0b212d !default; // Dary Navy
+$primary-active: #193241 !default; // Navy
+$primary-light: if(isDarkMode(), #212e48, $gray-200) !default; // Custom variable
 $primary-inverse: $white !default; // Custom variable
 
 // Secondary colors

@@ -1,5 +1,6 @@
 import React, {FC} from 'react'
 import {Field, ErrorMessage} from 'formik'
+import {KTSVG} from '../../../../../_metronic/helpers'
 
 const Fund4: FC = () => {
   return (
@@ -10,9 +11,9 @@ const Fund4: FC = () => {
 
       <div className='fv-row mb-10'>
         <label className='form-label mb-3'>
-          Select all currencies in which the company engages.
+          Select all <a className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+            operating currencies</a> of (Assumed Name).
         </label>
-        <i className='fas fa-exclamation-circle ms-2 fs-7' data-bs-toggle='tooltip'></i>
         <Field
           type='text'
           className='form-control form-control form-control-solid mb-5'
@@ -26,29 +27,29 @@ const Fund4: FC = () => {
       </div>
 
       <div className='fv-row mb-10'>
-        <label className='form-label'>Select which type of fund:</label>
+        <label className='form-label mb-3'>
+          Fund Type
+        </label>
         <Field
-          as='select'
+          type='text'
+          className='form-control form-control form-control-solid mb-5'
           name='fund_type'
-          className='form-select form-select-lg form-select-solid'
+          placeholder='Fund Type'
           label='Fund Type'
-        >
-          <option></option>
-          <option value='family office'>Family Office</option>
-          <option value='private equity group'>Private Equity Group</option>
-          <option value='venture capital firm'>Venture Capital Firm</option>
-        </Field>
+        ></Field>
         <div className='text-danger mt-2'>
           <ErrorMessage name='fund_type' />
         </div>
       </div>
 
       <div className='fv-row mb-10'>
-        <label className='form-label'>What # fund are you on?</label>
+        <label className='form-label mb-3'>
+          Fund Number
+        </label>
         <Field
           type='text'
+          className='form-control form-control form-control-solid mb-5'
           name='fund_number'
-          className='form-control form-control form-control-solid'
           placeholder='Fund Number'
           label='Fund Number'
         ></Field>

@@ -8,7 +8,7 @@ import {Verify} from './components/Verify'
 import {Login} from './components/Login'
 import {toAbsoluteUrl} from '../../../_metronic/helpers'
 import {CompanySignupWrapper} from './components/company-signup/CompanySignupWrapper'
-import {FundSignupWrapper} from './components/fund/FundSignupWrapper'
+import {FundSignupWrapper} from './components/fund-signup/FundSignupWrapper'
 import {ResetPassword} from './components/ResetPassword'
 
 export function AuthPage() {
@@ -42,7 +42,7 @@ export function AuthPage() {
           <Route path='/auth/verify/:token' component={Verify} />
           <Route path='/auth/setup/company' component={CompanySignupWrapper} />
           <Route path='/auth/setup/fund' component={FundSignupWrapper} />
-          <Route path='/reset-password/user/:token' component={ResetPassword} />
+          <Route path='/auth/reset-password/user/:token' component={ResetPassword} />
           <Redirect from='/auth' exact={true} to='/auth/login' />
           <Redirect to='/auth/login' />
         </Switch>

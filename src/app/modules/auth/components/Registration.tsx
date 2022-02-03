@@ -6,6 +6,7 @@ import {register} from '../redux/AuthCRUD'
 import {Link, useHistory} from 'react-router-dom'
 import {PasswordMeterComponent} from '../../../../_metronic/assets/ts/components'
 import InputField from '../../../components/auth/InputField'
+import SelectField from '../../../components/auth/selectField'
 import SubmitButton from '../../../components/auth/SubmitButton'
 import CancelButton from '../../../components/auth/CancelButtom'
 
@@ -164,15 +165,16 @@ export function Registration() {
           />
         </div>
         <div className='row fv-row mb-7'>
-          <InputField
+          <SelectField
             title='Business Type'
-            autoComplete='off'
             formik={formik}
             formikTouched={formik.touched.type}
             formikErrors={formik.errors.type}
             formikTitle='type'
-            type='text'
-          />
+          >
+            <option value='Company'>Company</option>
+            <option value='Fund'>Fund</option>
+          </SelectField>
         </div>
         <div className='mb-10 fv-row' data-kt-password-meter='true'>
           <div className='mb-1'>
