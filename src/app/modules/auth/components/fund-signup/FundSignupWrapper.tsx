@@ -49,7 +49,7 @@ const FundSignupPage: FC = () => {
     } else {
       values.user = user_id
       if (!user_id) {
-        setErrMessage('you should register before company setup')
+        setErrMessage('You should register before fund setup!')
         return
       }
       createFund(values)
@@ -57,7 +57,7 @@ const FundSignupPage: FC = () => {
           history.push('/auth/login')
         })
         .catch(() => {
-          setErrMessage('Company register has been failed')
+          setErrMessage('Fund register has been failed')
         })
     }
   }
@@ -71,33 +71,33 @@ const FundSignupPage: FC = () => {
 
   return (
     <>
-      <div className='alert alert-dismissible bg-light-success d-flex flex-column flex-sm-row p-5 mb-10'>
-        <span className='svg-icon svg-icon-2hx svg-icon-success me-4 mb-5 mb-sm-0'>
+      <div className='alert alert-dismissible bg-light-dark d-flex flex-column flex-sm-row p-5 mb-10'>
+        <span className='svg-icon svg-icon-2hx svg-icon-primary me-4 mb-5 mb-sm-0'>
           <KTSVG
             path='/media/icons/duotune/general/gen026.svg'
-            className='svg-icon svg-icon-2hx svg-icon-success me-4 mb-5 mb-sm-0'
+            className='svg-icon svg-icon-2hx svg-icon-primary me-4 mb-5 mb-sm-0'
           />
         </span>
 
-        <div className='d-flex flex-column text-success pe-0 pe-sm-10'>
-          <h5 className='mb-1'>Welcome!</h5>
+        <div className='d-flex flex-column text pe-0 pe-sm-10'>
+          <h5 className='mb-3'>Welcome to Fund Signup!</h5>
           <span>
             Hello, thank you for joining ESG Impact. Our goal is to help companies find
             a prudent balance between impact and profit. If you have any questions setting up your
             company profile, feel free to contact us at:
-            <a href='#'> contact@esgi.io</a>
+            <a href= "mailto: contact@esgi.io"> contact@esgi.io</a>
           </span>
         </div>
 
         <button
           type='button'
           className='position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto'
-          data-bs-dismiss='alert'
+          data-bs-dismiss="alert"
         >
-          <span className='svg-icon svg-icon-1 svg-icon-success'>
+          <span className='svg-icon svg-icon-1 svg-icon-primary'>
             <KTSVG
               path='/media/icons/duotune/arrows/arr011.svg'
-              className='svg-icon-success svg-icon-1hx'
+              className='svg-icon-primary svg-icon-1hx'
             />
           </span>
         </button>
@@ -136,7 +136,7 @@ const FundSignupPage: FC = () => {
 
                 <div className='stepper-label'>
                   <h3 className='stepper-title'>Information</h3>
-                  <div className='stepper-desc fw-bold'>Basic Company Information</div>
+                  <div className='stepper-desc fw-bold'>Basic Fund Information</div>
                 </div>
               </div>
 
@@ -150,7 +150,7 @@ const FundSignupPage: FC = () => {
 
                 <div className='stepper-label'>
                   <h3 className='stepper-title'>Operations</h3>
-                  <div className='stepper-desc fw-bold'>Your Company Operations</div>
+                  <div className='stepper-desc fw-bold'>Your Fund Operations</div>
                 </div>
               </div>
 
@@ -164,7 +164,7 @@ const FundSignupPage: FC = () => {
 
                 <div className='stepper-label'>
                   <h3 className='stepper-title'>Finances</h3>
-                  <div className='stepper-desc fw-bold'>Your Company Finances</div>
+                  <div className='stepper-desc fw-bold'>Your Fund Finances</div>
                 </div>
               </div>
 
@@ -250,7 +250,7 @@ const FundSignupWrapper: FC = () => {
 
   return (
     <div className='w-lg-1000px bg-white rounded shadow-sm p-10 p-lg-15 mx-auto'>
-      <PageTitle breadcrumbs={[]}>{intl.formatMessage({id: 'Fund Signup'})}</PageTitle>
+      <PageTitle breadcrumbs={[]}>{intl.formatMessage({id:'Fund Signup'})}</PageTitle>
       <FundSignupPage />
     </div>
   )

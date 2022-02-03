@@ -7,7 +7,7 @@ import CancelButton from '../../../components/auth/CancelButtom'
 import SubmitButton from '../../../components/auth/SubmitButton'
 
 const initialValues = {
-  email: 'admin@demo.com',
+  email: '',
 }
 
 const forgotPasswordSchema = Yup.object().shape({
@@ -70,33 +70,37 @@ export function ForgotPassword() {
           </div>
         )}
 
-        <div className='fv-row mb-10'>
-          <InputField
-            type='email'
-            autoComplete='off'
-            formikTouched={formik.touched.email}
-            formikErrors={formik.errors.email}
-            title='Email'
-            formikTitle='email'
-            formik={formik}
-          />
-        </div>
+        {hasErrors !== false && (
+          <>
+            <div className='fv-row mb-10'>
+              <InputField
+                type='email'
+                autoComplete='off'
+                formikTouched={formik.touched.email}
+                formikErrors={formik.errors.email}
+                title='Email'
+                formikTitle='email'
+                formik={formik}
+              />
+            </div>
 
-        <div className='d-flex flex-wrap justify-content-center pb-lg-0'>
-          <SubmitButton
-            text='Submit'
-            id='kt_password_reset_submit'
-            className='btn btn-lg btn-primary fw-bolder me-4'
-            loading={loading}
-          />
-          <CancelButton
-            linkPath='/auth/login'
-            id='kt_login_password_reset_form_cancel_button'
-            className='btn btn-lg btn-light-primary fw-bolder'
-            disable={formik.isSubmitting || !formik.isValid}
-            text='Cancel'
-          />
-        </div>
+            <div className='d-flex flex-wrap justify-content-center pb-lg-0'>
+              <SubmitButton
+                text='Submit'
+                id='kt_password_reset_submit'
+                className='btn btn-lg btn-primary fw-bolder me-4'
+                loading={loading}
+              />
+              <CancelButton
+                linkPath='/auth/login'
+                id='kt_login_password_reset_form_cancel_button'
+                className='btn btn-lg btn-light-primary fw-bolder'
+                disable={formik.isSubmitting || !formik.isValid}
+                text='Cancel'
+              />
+            </div>
+          </>
+        )}
       </form>
     </div>
   )

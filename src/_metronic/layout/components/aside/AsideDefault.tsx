@@ -47,7 +47,6 @@ const AsideDefault: FC = () => {
           <div
             id='kt_aside_toggle'
             className='btn btn-icon btn-active-color-primary w-auto px-0 aside-toggle'
-            style={{background: '#fff'}}
             data-kt-toggle='true'
             data-kt-toggle-state='active'
             data-kt-toggle-target='body'

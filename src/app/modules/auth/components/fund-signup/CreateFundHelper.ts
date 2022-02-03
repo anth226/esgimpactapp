@@ -14,7 +14,7 @@ const createFundSchemas = [
     website: Yup.string().required().label('Website'),
   }),
   Yup.object({
-    sics_codes: Yup.string().required().label('SICS Codes'),
+    primary_industry: Yup.string().required().label('Primary Industry'),
     number_employees: Yup.string().required().label('Number of Employees'),
     primary_address: Yup.string().required().label('Primary Address'),
     other_addresses: Yup.string().required().label('Other Addresses'),
@@ -36,7 +36,7 @@ const inits: FundModel = {
   description: '',
   mission_statement: '',
   website: '',
-  sics_codes: '',
+  primary_industry: 'FN-AC',
   number_employees: '',
   primary_address: '',
   other_addresses: '',

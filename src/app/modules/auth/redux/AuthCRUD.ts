@@ -43,8 +43,7 @@ export function register(
 
 // Server should change the password
 export function resetPassword(token: string, password: string) {
-  console.log(token, password)
-  return axios.post(`${RESET_PASSWORD}/${token}`, {password: password})
+  return axios.post(`${RESET_PASSWORD}/${token}`, {password})
 }
 
 // Server should return object => { result: boolean } (Is Email in DB)

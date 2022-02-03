@@ -5,7 +5,7 @@ import {resetPassword} from '../redux/AuthCRUD'
 import InputField from '../../../components/auth/InputField'
 import CancelButton from '../../../components/auth/CancelButtom'
 import SubmitButton from '../../../components/auth/SubmitButton'
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 
 const initialValues = {
   password: '',
@@ -32,6 +32,8 @@ export const ResetPassword = () => {
   const {token}: queryParams = useParams()
   const [loading, setLoading] = useState(false)
   const [hasErrors, setHasErrors] = useState<boolean | undefined>(undefined)
+  const history = useHistory()
+
   const formik = useFormik({
     initialValues,
     validationSchema: resetPasswordSchema,
@@ -45,6 +47,7 @@ export const ResetPassword = () => {
             .then(({data: {result}}) => {
               setHasErrors(false)
               setLoading(false)
+              setTimeout(() => history.push('/auth/login'), 2000)
             })
             .catch(() => {
               setHasErrors(true)
@@ -85,49 +88,55 @@ export const ResetPassword = () => {
 
         {hasErrors === false && (
           <div className='mb-10 bg-light-info p-8 rounded'>
-            <div className='text-info text-center'>Password changed successfully. Please login with your new password.</div>
+            <div className='text-info text-center'>
+              Password changed successfully. Please login with your new password.
+            </div>
           </div>
         )}
 
-        <div className='fv-row mb-10'>
-          <InputField
-            type='password'
-            autoComplete='off'
-            formikTouched={formik.touched.password}
-            formikErrors={formik.errors.password}
-            title='Password'
-            formikTitle='password'
-            formik={formik}
-          />
-        </div>
+        {hasErrors !== false && (
+          <>
+            <div className='fv-row mb-10'>
+              <InputField
+                type='password'
+                autoComplete='off'
+                formikTouched={formik.touched.password}
+                formikErrors={formik.errors.password}
+                title='Password'
+                formikTitle='password'
+                formik={formik}
+              />
+            </div>
 
-        <div className='fv-row mb-10'>
-          <InputField
-            type='password'
-            autoComplete='off'
-            formikTouched={formik.touched.confirmPassword}
-            formikErrors={formik.errors.confirmPassword}
-            title='Confirm Password'
-            formikTitle='confirmPassword'
-            formik={formik}
-          />
-        </div>
+            <div className='fv-row mb-10'>
+              <InputField
+                type='password'
+                autoComplete='off'
+                formikTouched={formik.touched.confirmPassword}
+                formikErrors={formik.errors.confirmPassword}
+                title='Confirm Password'
+                formikTitle='confirmPassword'
+                formik={formik}
+              />
+            </div>
 
-        <div className='d-flex flex-wrap justify-content-center pb-lg-0'>
-          <SubmitButton
-            text='Submit'
-            id='kt_password_reset_submit'
-            className='btn btn-lg btn-primary fw-bolder me-4'
-            loading={loading}
-          />
-          <CancelButton
-            linkPath='/auth/login'
-            id='kt_login_password_reset_form_cancel_button'
-            className='btn btn-lg btn-light-primary fw-bolder'
-            disable={formik.isSubmitting || !formik.isValid}
-            text='Cancel'
-          />
-        </div>
+            <div className='d-flex flex-wrap justify-content-center pb-lg-0'>
+              <SubmitButton
+                text='Submit'
+                id='kt_password_reset_submit'
+                className='btn btn-lg btn-primary fw-bolder me-4'
+                loading={loading}
+              />
+              <CancelButton
+                linkPath='/auth/login'
+                id='kt_login_password_reset_form_cancel_button'
+                className='btn btn-lg btn-light-primary fw-bolder'
+                disable={formik.isSubmitting || !formik.isValid}
+                text='Cancel'
+              />
+            </div>
+          </>
+        )}
       </form>
     </div>
   )
