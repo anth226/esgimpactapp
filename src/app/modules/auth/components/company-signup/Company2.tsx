@@ -1,44 +1,108 @@
-import React, {FC} from 'react'
+import React, {FC, useState} from 'react'
 import {Field, ErrorMessage} from 'formik'
+import InformatioModal from './ModalInformation'
+import {KTSVG} from '../../../../../_metronic/helpers'
 
 const Company2: FC = () => {
+  const [modal, setModal] = useState({
+    isOpen: false,
+    modaltype: '',
+  })
+
+  const handleModal = (isOpen:boolean,type: string) => {
+    setModal((val) => {
+      return {
+        ...val,
+        isOpen: !isOpen,
+        modaltype:type,
+      }
+    })
+  }
   return (
     <div className='w-100'>
       <div className='pb-10 pb-lg-15'>
-        <h2 className='fw-bolder text-dark'>Information
+        <h2 className='fw-bolder text-dark'>
+          Information
           <i
-              className='fas fa-exclamation-circle ms-2 fs-7'
-              data-bs-toggle='tooltip'
-              title='Provide your basic company information.'
+            className='fas fa-exclamation-circle ms-2 fs-7'
+            data-bs-toggle='tooltip'
+            title='Provide your basic company information.'
           ></i>
         </h2>
         <div className='text-gray-400 fw-bold fs-6'>
-          For more help, check out our 
-          <a href='#' className='link-primary fw-bolder'>
+          For more help, check out our
+          <a href='#' className='link-primary fw-bolder'
+          onClick={() => handleModal(modal.isOpen,'information-example')}>
             {' '}
             example
           </a>
           .
         </div>
       </div>
-
       <div className='fv-row mb-10'>
         <label className='form-label mb-3'>
-          What is the <a className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+          What is the
+          <a
+            className='link-primary fw-bolder btn btn-flush'
+            onClick={() => handleModal(modal.isOpen,'assumed-name')}
+          >
             Assumed Name
-          </a> and <a href='#' className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+          </a>{' '}
+          and
+          <a
+            href='#'
+            className='link-primary fw-bolder btn btn-flush'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_1'
+            onClick={() => handleModal(modal.isOpen,'legal-name')}
+          >
             Legal Name
-          </a> of your organization?
+          </a>
+          of your organization?
         </label>
-
+        <InformatioModal
+          type='assumed-name'
+          title='Here goes the Assumed title...'
+          body='Here goes the Assumed body...'
+          setModal={handleModal}
+          isModalOpen={modal}
+        />
+          <InformatioModal
+          type='legal-name'
+          title='Here goes the Legal title...'
+          body='Here goes the Legal body...'
+          setModal={handleModal}
+          isModalOpen={modal}
+        />
+            <InformatioModal
+          type='legal-information'
+          title='Here goes the Legal information title...'
+          body='Here goes the Legal information body...'
+          setModal={handleModal}
+          isModalOpen={modal}
+        />
+          <InformatioModal
+          type='mission-statement'
+          title='Here goes the Legal Mission statement title...'
+          body='Here goes the Legal mission body...'
+          setModal={handleModal}
+          isModalOpen={modal}
+        />
+         <InformatioModal
+          type='information-example'
+          title='Here goes the Example title...'
+          body='Here goes the example body...'
+          setModal={handleModal}
+          isModalOpen={modal}
+        />
+        
         <Field
           type='text'
           className='form-control form-control form-control-solid mb-5'
           name='assumed_name'
-          placeholder="Assumed Name"
-          label="Assumed Name"
-          >
-        </Field>
+          placeholder='Assumed Name'
+          label='Assumed Name'
+        ></Field>
 
         <div className='text-danger mt-2'>
           <ErrorMessage name='assumed_name' />
@@ -48,10 +112,10 @@ const Company2: FC = () => {
           type='text'
           className='form-control form-control form-control-solid'
           name='legal_name'
-          placeholder="Legal Name"
-          label="Legal Name">
-        </Field>
-      
+          placeholder='Legal Name'
+          label='Legal Name'
+        ></Field>
+
         <div className='text-danger mt-2'>
           <ErrorMessage name='legal_name' />
         </div>
@@ -59,15 +123,24 @@ const Company2: FC = () => {
 
       <div className='fv-row mb-10'>
         <label className='form-label'>
-          What is your <a href='#' className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
-          legal formation</a>?
+          What is your{' '}
+          <a
+            href='#'
+            className='link-primary fw-bolder btn btn-flush'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_1'
+            onClick={() => handleModal(modal.isOpen,'legal-information')}
+          >
+            legal formation
+          </a>
+          ?
         </label>
 
         <Field
           as='select'
           name='legal_formation'
           className='form-select form-select-lg form-select-solid'
-          label="Legal Formation"
+          label='Legal Formation'
         >
           <option></option>
           <option value='1'>S Corporation</option>
@@ -92,14 +165,23 @@ const Company2: FC = () => {
           name='description'
           className='form-control form-control-lg form-control-solid'
           rows={5}
-          placeholder="Business Description"
-          label="Business Description"
+          placeholder='Business Description'
+          label='Business Description'
         ></Field>
       </div>
-      
+
       <div className='fv-row mb-10'>
-        <label className='form-label mb-3'>What is your <a className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
-          mission statement</a> or statement of purpose?
+        <label className='form-label mb-3'>
+          What is your{' '}
+          <a
+            className='link-primary fw-bolder btn btn-flush'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_1'
+            onClick={() => handleModal(modal.isOpen,'mission-statement')}
+          >
+            mission statement
+          </a>{' '}
+          or statement of purpose?
         </label>
 
         <Field
@@ -107,10 +189,10 @@ const Company2: FC = () => {
           className='form-control form-control-lg form-control-solid mb-5'
           name='mission_statement'
           rows={3}
-          placeholder="Mission Statement"
-          label="Mission Statement"
+          placeholder='Mission Statement'
+          label='Mission Statement'
         />
-      
+
         <div className='text-danger mt-2'>
           <ErrorMessage name='mission_statement' />
         </div>
@@ -123,14 +205,15 @@ const Company2: FC = () => {
           type='text'
           className='form-control form-control-lg form-control-solid mb-5'
           name='company_website'
-          placeholder="Company Website"
-          label="Company Website"
+          placeholder='Company Website'
+          label='Company Website'
         />
-      
+
         <div className='text-danger mt-2'>
           <ErrorMessage name='company_website' />
         </div>
       </div>
     </div>
-  )}
+  )
+}
 export {Company2}
