@@ -3,7 +3,7 @@ import {CompanyModel} from '../../models/CompanyModel'
 
 const createCompanySchemas = [
   Yup.object({
-    //no fields on first page (the terms & conditions pages)
+    acceptTerms: Yup.bool().oneOf([true], 'You should agree with the terms to continue').nullable(),
   }),
   Yup.object({
     assumed_name: Yup.string().required().label('Assumed Name'),
@@ -14,16 +14,15 @@ const createCompanySchemas = [
     company_website: Yup.string().required().label('Company Website'),
   }),
   Yup.object({
-    sics_codes: Yup.string().required().label('SICS Codes'),
+    primary_industry: Yup.string().required().label('SICS Codes'),
     primary_products: Yup.string().required().label('Primary Products'),
     number_employees: Yup.string().required().label('Number of Employees'),
     primary_address: Yup.string().required().label('Primary Address'),
-    other_addresses: Yup.string().required().label('Other Addresses'),
     operating_countries: Yup.string().required().label('Operating Countries'),
   }),
   Yup.object({
-    operating_currencies: Yup.string().required().label('Operating Currencies'),
-    ttm_revenue: Yup.string().required().label('TTM Revenue'),
+    operating_currencies: Yup.array().required().label('Operating Currencies'),
+    ttm_revenue: Yup.number().required().label('TTM Revenue'),
     ttm_revenue_currency: Yup.string().required().label('TTM Revenue Currency'),
     net_positive: Yup.string().required().label('Net Positive'),
   }),
@@ -39,20 +38,22 @@ const createCompanySchemas = [
 const inits: CompanyModel = {
   _id: null,
   user: null,
+  acceptTerms: false,
   assumed_name: '',
   legal_name: '',
   legal_formation: '',
   description: '',
   mission_statement: '',
   company_website: '',
-  sics_codes: '',
+  primary_industry: '',
+  secondary_industry: [],
   primary_products: '',
   number_employees: '',
   primary_address: '',
-  other_addresses: '',
+  other_addresses: [],
   operating_countries: '',
-  operating_currencies: '',
-  ttm_revenue: '',
+  operating_currencies: [],
+  ttm_revenue: 0,
   ttm_revenue_currency: '',
   net_positive: '',
 }

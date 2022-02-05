@@ -3,7 +3,7 @@ import {FundModel} from '../../models/FundModel'
 
 const createFundSchemas = [
   Yup.object({
-    //no fields on first page (the terms & conditions pages)
+    acceptTerms: Yup.bool().oneOf([true], 'You should agree with the terms to continue').nullable(),
   }),
   Yup.object({
     assumed_name: Yup.string().required().label('Assumed Name'),
@@ -30,6 +30,7 @@ const createFundSchemas = [
 const inits: FundModel = {
   _id: null,
   user: null,
+  acceptTerms: false,
   assumed_name: '',
   legal_name: '',
   legal_formation: '',

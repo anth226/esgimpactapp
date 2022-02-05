@@ -1,8 +1,12 @@
 import React, {FC} from 'react'
 import {Field, ErrorMessage} from 'formik'
-import {KTSVG} from '../../../../../_metronic/helpers'
+import {Link} from 'react-router-dom'
 
-const Fund4: FC = () => {
+interface IProps {
+  openModal: Function
+}
+
+const Fund4: FC<IProps> = (props: IProps) => {
   return (
     <div className='w-100'>
       <div className='pb-10 pb-lg-15'>
@@ -11,8 +15,17 @@ const Fund4: FC = () => {
 
       <div className='fv-row mb-10'>
         <label className='form-label mb-3'>
-          Select all <a className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
-            operating currencies</a> of (Assumed Name).
+          Select all{' '}
+          <Link
+            to='#'
+            className='link-primary fw-bolder btn btn-flush'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_1'
+            onClick={() => props.openModal('operating-currencies')}
+          >
+            operating currencies
+          </Link>{' '}
+          of (Assumed Name).
         </label>
         <Field
           type='text'
@@ -27,9 +40,7 @@ const Fund4: FC = () => {
       </div>
 
       <div className='fv-row mb-10'>
-        <label className='form-label mb-3'>
-          Fund Type
-        </label>
+        <label className='form-label mb-3'>Fund Type</label>
         <Field
           type='text'
           className='form-control form-control form-control-solid mb-5'
@@ -43,9 +54,7 @@ const Fund4: FC = () => {
       </div>
 
       <div className='fv-row mb-10'>
-        <label className='form-label mb-3'>
-          Fund Number
-        </label>
+        <label className='form-label mb-3'>Fund Number</label>
         <Field
           type='text'
           className='form-control form-control form-control-solid mb-5'

@@ -1,46 +1,70 @@
 import React, {FC} from 'react'
 import {Field, ErrorMessage} from 'formik'
-import {KTSVG, toAbsoluteUrl} from '../../../../../_metronic/helpers'
-import {Modal} from 'react-bootstrap-v5'
+import {Link} from 'react-router-dom'
 
-const Fund2: FC = () => {
+interface IProps {
+  openModal: Function
+}
+
+const Fund2: FC<IProps> = (props: IProps) => {
   return (
     <div className='w-100'>
       <div className='pb-10 pb-lg-15'>
-        <h2 className='fw-bolder text-dark'>Information
+        <h2 className='fw-bolder text-dark'>
+          Information
           <i
-              className='fas fa-exclamation-circle ms-2 fs-7'
-              data-bs-toggle='tooltip'
-              title='Provide your basic company information.'
+            className='fas fa-exclamation-circle ms-2 fs-7'
+            data-bs-toggle='tooltip'
+            title='Provide your basic company information.'
           ></i>
         </h2>
         <div className='text-gray-400 fw-bold fs-6'>
-          For more help, check out our 
-          <a href='#' className='link-primary fw-bolder'>
-            {' '}
+          For more help, check out our{' '}
+          <Link
+            to='#'
+            className='link-primary fw-bolder'
+            onClick={() => props.openModal('information-example')}
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_1'
+          >
             example
-          </a>
+          </Link>
           .
         </div>
       </div>
 
       <div className='fv-row mb-10'>
         <label className='form-label mb-3'>
-          What is the <a className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+          What is the{' '}
+          <Link
+            to='#'
+            className='link-primary fw-bolder btn btn-flush'
+            onClick={() => props.openModal('assumed-name')}
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_1'
+          >
             Assumed Name
-          </a> and <a href='#' className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+          </Link>{' '}
+          and{' '}
+          <Link
+            to='#'
+            className='link-primary fw-bolder btn btn-flush'
+            onClick={() => props.openModal('legal-name')}
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_1'
+          >
             Legal Name
-          </a> of your organization?
+          </Link>{' '}
+          of your organization?
         </label>
 
         <Field
           type='text'
           className='form-control form-control form-control-solid mb-5'
           name='assumed_name'
-          placeholder="Assumed Name"
-          label="Assumed Name"
-          >
-        </Field>
+          placeholder='Assumed Name'
+          label='Assumed Name'
+        ></Field>
 
         <div className='text-danger mt-2'>
           <ErrorMessage name='assumed_name' />
@@ -50,10 +74,10 @@ const Fund2: FC = () => {
           type='text'
           className='form-control form-control form-control-solid'
           name='legal_name'
-          placeholder="Legal Name"
-          label="Legal Name">
-        </Field>
-      
+          placeholder='Legal Name'
+          label='Legal Name'
+        ></Field>
+
         <div className='text-danger mt-2'>
           <ErrorMessage name='legal_name' />
         </div>
@@ -61,15 +85,24 @@ const Fund2: FC = () => {
 
       <div className='fv-row mb-10'>
         <label className='form-label'>
-          What is your <a href='#' className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
-          legal formation</a>?
+          What is your{' '}
+          <Link
+            to='#'
+            className='link-primary fw-bolder btn btn-flush'
+            onClick={() => props.openModal('legal-information')}
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_1'
+          >
+            legal formation
+          </Link>
+          ?
         </label>
 
         <Field
           as='select'
           name='legal_formation'
           className='form-select form-select-lg form-select-solid'
-          label="Legal Formation"
+          label='Legal Formation'
         >
           <option></option>
           <option value='1'>S Corporation</option>
@@ -94,14 +127,24 @@ const Fund2: FC = () => {
           name='description'
           className='form-control form-control-lg form-control-solid'
           rows={5}
-          placeholder="Business Description"
-          label="Business Description"
+          placeholder='Business Description'
+          label='Business Description'
         ></Field>
       </div>
-      
+
       <div className='fv-row mb-10'>
-        <label className='form-label mb-3'>What is your <a className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
-          mission statement</a> or statement of purpose?
+        <label className='form-label mb-3'>
+          What is your{' '}
+          <Link
+            to='#'
+            className='link-primary fw-bolder btn btn-flush'
+            onClick={() => props.openModal('mission-statement')}
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_1'
+          >
+            mission statement
+          </Link>{' '}
+          or statement of purpose?
         </label>
 
         <Field
@@ -109,10 +152,10 @@ const Fund2: FC = () => {
           className='form-control form-control-lg form-control-solid mb-5'
           name='mission_statement'
           rows={3}
-          placeholder="Mission Statement"
-          label="Mission Statement"
+          placeholder='Mission Statement'
+          label='Mission Statement'
         />
-      
+
         <div className='text-danger mt-2'>
           <ErrorMessage name='mission_statement' />
         </div>
@@ -125,14 +168,15 @@ const Fund2: FC = () => {
           type='text'
           className='form-control form-control-lg form-control-solid mb-5'
           name='website'
-          placeholder="Website"
-          label="Website"
+          placeholder='Website'
+          label='Website'
         />
-      
+
         <div className='text-danger mt-2'>
           <ErrorMessage name='website' />
         </div>
       </div>
     </div>
-  )}
+  )
+}
 export {Fund2}

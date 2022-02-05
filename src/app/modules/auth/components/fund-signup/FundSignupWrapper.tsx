@@ -5,17 +5,15 @@ import {Fund1} from './Fund1'
 import {Fund2} from './Fund2'
 import {Fund3} from './Fund3'
 import {Fund4} from './Fund4'
-
 import {StepperComponent} from '../../../../../_metronic/assets/ts/components'
 import {Formik, Form, FormikValues} from 'formik'
 import {createFundSchemas, inits} from './CreateFundHelper'
-import {useIntl} from 'react-intl'
-import {PageTitle} from '../../../../../_metronic/layout/core'
 import {createFund} from '../../redux/AuthCRUD'
 import {FundModel} from '../../models/FundModel'
 import {useHistory} from 'react-router-dom'
 import {shallowEqual, useSelector} from 'react-redux'
 import {RootState} from '../../../../../setup'
+import InformatioModal from './ModalInformation'
 
 const FundSignupPage: FC = () => {
   const stepperRef = useRef<HTMLDivElement | null>(null)
@@ -25,6 +23,12 @@ const FundSignupPage: FC = () => {
   const history = useHistory()
   const [errMessage, setErrMessage] = useState('')
   const user_id: string = useSelector<RootState>(({auth}) => auth._id, shallowEqual) as string
+
+  const [modalName, setModalName] = useState('')
+
+  const openModal = (name: string) => {
+    setModalName(name)
+  }
 
   const loadStepper = () => {
     stepper.current = StepperComponent.createInsance(stepperRef.current as HTMLDivElement)
@@ -82,17 +86,17 @@ const FundSignupPage: FC = () => {
         <div className='d-flex flex-column text pe-0 pe-sm-10'>
           <h5 className='mb-3'>Welcome to Fund Signup!</h5>
           <span>
-            Hello, thank you for joining ESG Impact. Our goal is to help companies find
-            a prudent balance between impact and profit. If you have any questions setting up your
-            company profile, feel free to contact us at:
-            <a href= "mailto: contact@esgi.io"> contact@esgi.io</a>
+            Hello, thank you for joining ESG Impact. Our goal is to help companies find a prudent
+            balance between impact and profit. If you have any questions setting up your company
+            profile, feel free to contact us at:
+            <a href='mailto: contact@esgi.io'> contact@esgi.io</a>
           </span>
         </div>
 
         <button
           type='button'
           className='position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto'
-          data-bs-dismiss="alert"
+          data-bs-dismiss='alert'
         >
           <span className='svg-icon svg-icon-1 svg-icon-primary'>
             <KTSVG
@@ -193,13 +197,13 @@ const FundSignupPage: FC = () => {
                   <Fund1 />
                 </div>
                 <div data-kt-stepper-element='content'>
-                  <Fund2 />
+                  <Fund2 openModal={openModal} />
                 </div>
                 <div data-kt-stepper-element='content'>
-                  <Fund3 />
+                  <Fund3 openModal={openModal} />
                 </div>
                 <div data-kt-stepper-element='content'>
-                  <Fund4 />
+                  <Fund4 openModal={openModal} />
                 </div>
 
                 {errMessage && <p className='text-danger'>{errMessage}</p>}
@@ -238,6 +242,7 @@ const FundSignupPage: FC = () => {
             )}
           </Formik>
         </div>
+        <InformatioModal name={modalName} />
       </div>
     </>
   )
@@ -246,11 +251,8 @@ const FundSignupPage: FC = () => {
 export {FundSignupPage}
 
 const FundSignupWrapper: FC = () => {
-  const intl = useIntl()
-
   return (
     <div className='w-lg-1000px bg-white rounded shadow-sm p-10 p-lg-15 mx-auto'>
-      <PageTitle breadcrumbs={[]}>{intl.formatMessage({id:'Fund Signup'})}</PageTitle>
       <FundSignupPage />
     </div>
   )

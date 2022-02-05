@@ -15,4 +15,5 @@ export interface FundModel {
   operating_currencies: string
   fund_type: string
   fund_number: string
+  acceptTerms: boolean | null
 }

@@ -68,12 +68,12 @@ const SitemapPage: FC = () => (
                                 </div>
                             </div>
                             <div className="col-sm-4">
-                                <h3 className="fw-bolder text-dark mb-7">Studio</h3>
+                                <h3 className="fw-bolder text-dark mb-7">What to Expect</h3>
                                 <div className="d-flex flex-column fw-bold fs-4">
-                                    <a href="#" className="link-primary mb-6">Clients</a>
-                                    <a href="#" className="link-primary mb-6">Oppurtunaties</a>
-                                    <a href="#" className="link-primary mb-6">Hire Experts</a>
-                                    <a href="#" className="link-primary">Locations</a>
+                                    <a href="#" className="link-primary mb-6">Benchmarks</a>
+                                    <a href="#" className="link-primary mb-6">Due Diligence Tools</a>
+                                    <a href="#" className="link-primary mb-6">Community Feed</a>
+                                    <a href="#" className="link-primary">ESG News Hub</a>
                                 </div>
                             </div>
                         </div>

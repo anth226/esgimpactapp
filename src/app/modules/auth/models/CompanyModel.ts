@@ -7,14 +7,16 @@ export interface CompanyModel {
   description: string
   mission_statement: string
   company_website: string
-  sics_codes: string
+  primary_industry: string
+  secondary_industry: Array<string>
   primary_products: string
   number_employees: string
   primary_address: string
-  other_addresses: string
+  other_addresses: Array<string>
   operating_countries: string
-  operating_currencies: string
-  ttm_revenue: string
+  operating_currencies: Array<string>
+  ttm_revenue: number
   ttm_revenue_currency: string
   net_positive: string
+  acceptTerms: boolean | null
 }

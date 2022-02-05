@@ -2,10 +2,9 @@ import React, {Suspense} from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
 import {FallbackView} from '../../_metronic/partials'
 import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
-import {BenchmarkWrapper} from '../pages/benchmark/BenchmarkWrapper'
+import {MaterialityWrapper} from '../pages/materiality/MaterialityWrapper'
 import {AnalystWrapper} from '../pages/analyst/AnalystWrapper'
 import {SitemapWrapper} from '../pages/sitemap/SitemapWrapper'
-import {Module} from '../resources/modules/module'
 
 export function PrivateRoutes() {
 
@@ -14,11 +13,12 @@ export function PrivateRoutes() {
       <Switch>
         {/* Overview */}
         <Route path='/dashboard' component={DashboardWrapper} />
-        <Route path='/benchmark' component={BenchmarkWrapper} />
+
+        {/* Overview */}
+        <Route path='/materiality' component={MaterialityWrapper} />
 
         {/* Resources */}
         <Route path='/analyst' component={AnalystWrapper} />
-        <Route path='/module' component={Module} />
 
         {/* Other */}
         <Route path='/sitemap' component={SitemapWrapper} />
