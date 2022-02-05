@@ -29,7 +29,7 @@ export function AsideMenuMain() {
         </div>
       </div>
       <AsideMenuItem
-        to='#'
+        to='/materiality'
         icon='/media/icons/duotune/abstract/abs027.svg'
         title='Materiality Matrix'
         fontIcon='bi-layers'
@@ -53,7 +53,7 @@ export function AsideMenuMain() {
         fontIcon='bi-chat-left'
         icon='/media/icons/duotune/abstract/abs036.svg'
       >
-        <AsideMenuItem to='/module' title='Modules' hasBullet={true} />
+        <AsideMenuItem to='#' title='Modules' hasBullet={true} />
         <AsideMenuItem to='#' title='Media' hasBullet={true} />
         <AsideMenuItem to='#' title='Templates' hasBullet={true} />
       </AsideMenuItemWithSub>
@@ -66,13 +66,13 @@ export function AsideMenuMain() {
       /> */}
 
       <AsideMenuItem
-        to='/message'
+        to='/analyst'
         title='Analyst Contact'
         fontIcon='bi-chat-left'
         icon='/media/icons/duotune/communication/com006.svg'
       />
 
-      {/* <div className='menu-item'>
+      <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>
           <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Community</span>
         </div>
@@ -80,19 +80,11 @@ export function AsideMenuMain() {
 
       <AsideMenuItem
         to='#'
-        title='Feed (Coming Soon)'
+        title='Global Impact'
         fontIcon='bi-chat-left'
-        icon='/media/icons/duotune/communication/com012.svg'
+        icon='/media/icons/duotune/maps/map006.svg'
       >
       </AsideMenuItem>
-
-      <AsideMenuItem
-        to='#'
-        title='Profiles (Coming Soon)'
-        fontIcon='bi-chat-left'
-        icon='/media/icons/duotune/communication/com005.svg'
-      >
-      </AsideMenuItem> */}
 
       <div className='menu-item'>
         <div className='menu-content'>

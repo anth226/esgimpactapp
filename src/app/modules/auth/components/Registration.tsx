@@ -172,6 +172,7 @@ export function Registration() {
             formikErrors={formik.errors.type}
             formikTitle='type'
           >
+            <option></option>
             <option value='Company'>Company</option>
             <option value='Fund'>Fund</option>
           </SelectField>

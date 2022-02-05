@@ -1,19 +1,16 @@
 import React, {FC} from 'react'
 import {Field, ErrorMessage} from 'formik'
+import {Link} from 'react-router-dom'
 
-const Fund3: FC = () => {
+interface IProps {
+  openModal: Function
+}
+
+const Fund3: FC<IProps> = (props: IProps) => {
   return (
     <div className='w-100'>
       <div className='pb-10 pb-lg-15'>
         <h2 className='fw-bolder text-dark'>Operations</h2>
-        <div className='text-gray-400 fw-bold fs-6'>
-          For more help, check out our 
-          <a href='#' className='link-primary fw-bolder'>
-            {' '}
-            example
-          </a>
-          .
-        </div>
       </div>
 
       <div className='fv-row mb-10'>
@@ -63,8 +60,19 @@ const Fund3: FC = () => {
       </div>
 
       <div className='fv-row mb-10'>
-        <label className='form-label mb-3'>What are (Assumed Name)'s <a className='link-primary fw-bolder btn btn-flush' data-bs-toggle="modal" data-bs-target="#kt_modal_1">
-          operating countries</a>?</label>
+        <label className='form-label mb-3'>
+          What are (Assumed Name)'s{' '}
+          <Link
+            to='#'
+            className='link-primary fw-bolder btn btn-flush'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_1'
+            onClick={() => props.openModal('operating-countries')}
+          >
+            operating countries
+          </Link>
+          ?
+        </label>
         <Field
           type='text'
           className='form-control form-control-lg form-control-solid mb-5'
