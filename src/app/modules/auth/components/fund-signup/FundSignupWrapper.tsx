@@ -87,7 +87,7 @@ const FundSignupPage: FC = () => {
           <h5 className='mb-3'>Welcome to Fund Signup!</h5>
           <span>
             Hello, thank you for joining ESG Impact. Our goal is to help companies find a prudent
-            balance between impact and profit. If you have any questions setting up your company
+            balance between impact and profit. If you have any questions setting up your 
             profile, feel free to contact us at:
             <a href='mailto: contact@esgi.io'> contact@esgi.io</a>
           </span>

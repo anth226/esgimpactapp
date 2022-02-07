@@ -66,7 +66,7 @@ $aside-config: (
   padding-x: 25px,
   menu-indention: 0.75rem,
   bg-color: #113345,
-  logo-bg-color: darken(#113345, 5%),
+  logo-bg-color: #0b212d,
   scrollbar-color: if(isDarkMode(), $gray-200, #113345),
   scrollbar-hover-color: if(isDarkMode(), $gray-300, lighten(#113345, 3%)),
   width: 265px,

@@ -19,7 +19,7 @@ export function AsideMenuMain() {
 
       <AsideMenuItem
         to='/dashboard'
-        icon='/media/icons/duotune/general/gen022.svg'
+        icon='/media/icons/duotune/general/gen001.svg'
         title={intl.formatMessage({id: 'MENU.DASHBOARD'})}
         fontIcon='bi-app-indicator'
       />
@@ -30,18 +30,17 @@ export function AsideMenuMain() {
       </div>
       <AsideMenuItem
         to='/materiality'
-        icon='/media/icons/duotune/abstract/abs027.svg'
+        icon='/media/icons/duotune/general/gen008.svg'
         title='Materiality Matrix'
         fontIcon='bi-layers'
       />
       <AsideMenuItem
-        to='#'
-        icon='/media/icons/duotune/abstract/abs014.svg'
+        to='/impact-rating'
+        icon='/media/icons/duotune/graphs/gra006.svg'
         title='Impact Rating'
         fontIcon='bi-layers'
       />
       
-
       <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>
           <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Resources</span>
@@ -51,7 +50,7 @@ export function AsideMenuMain() {
         to='#'
         title='Resource Center'
         fontIcon='bi-chat-left'
-        icon='/media/icons/duotune/abstract/abs036.svg'
+        icon='/media/icons/downloaded/feather-alt-solid.svg'
       >
         <AsideMenuItem to='#' title='Modules' hasBullet={true} />
         <AsideMenuItem to='#' title='Media' hasBullet={true} />
@@ -79,7 +78,7 @@ export function AsideMenuMain() {
       </div>
 
       <AsideMenuItem
-        to='#'
+        to='/global-impact'
         title='Global Impact'
         fontIcon='bi-chat-left'
         icon='/media/icons/duotune/maps/map006.svg'

@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import * as Yup from 'yup'
 import {useFormik} from 'formik'
 import {resetPassword} from '../redux/AuthCRUD'
@@ -6,6 +6,7 @@ import InputField from '../../../components/auth/InputField'
 import CancelButton from '../../../components/auth/CancelButtom'
 import SubmitButton from '../../../components/auth/SubmitButton'
 import {useParams, useHistory} from 'react-router-dom'
+import {PasswordMeterComponent} from '../../../../_metronic/assets/ts/components'
 
 const initialValues = {
   password: '',
@@ -65,6 +66,10 @@ export const ResetPassword = () => {
     },
   })
 
+  useEffect(() => {
+    PasswordMeterComponent.bootstrap()
+  }, [])
+
   return (
     <div className='w-lg-500px bg-white rounded shadow-sm p-10 p-lg-15 mx-auto'>
       <form
@@ -96,7 +101,7 @@ export const ResetPassword = () => {
 
         {hasErrors !== false && (
           <>
-            <div className='fv-row mb-10'>
+            <div className='fv-row mb-10' data-kt-password-meter='true'>
               <InputField
                 type='password'
                 autoComplete='off'

@@ -7,26 +7,23 @@ import {KTSVG, toAbsoluteUrl} from '../../../_metronic/helpers'
 import {Card2} from '../../../_metronic/partials/content/cards/Card2'
 import {Link} from 'react-router-dom'
 import {useLocation} from 'react-router'
-import MaterialityHeader from './MaterialityHeader'
+import ImpactHeader from './ImpactHeader'
 import {Redirect, Route, Switch} from 'react-router-dom'
-import { CSSTransition } from 'react-transition-group'
 
 import {About} from './components/About'
 import {Examples} from './components/Examples'
-import {Assessment} from './components/Assessment'
 
-const MaterialityPage: React.FC = () => {
+const ImpactPage: React.FC = () => {
   return (
     <>
-      {/* <MaterialityHeader /> */}
+      <ImpactHeader />
 
       <Switch>
 
-        <Route path='/materiality/about' component={About} />
-        <Route path='/materiality/examples' component={Examples} />
-        <Route path='/materiality/assessment' component={Assessment} />
+        <Route path='/impact-rating/about' component={About} />
+        <Route path='/impact-rating/examples' component={Examples} />
 
-        <Redirect to='/materiality/about' />
+        <Redirect to='/impact-rating/about' />
 
       </Switch>
       
@@ -34,13 +31,13 @@ const MaterialityPage: React.FC = () => {
   )
 }
 
-const MaterialityWrapper: FC = () => {
+const ImpactWrapper: FC = () => {
   return (
     <>
-      <PageTitle breadcrumbs={[]}>Materiality Matrix</PageTitle>
-      <MaterialityPage />
+      <PageTitle breadcrumbs={[]}>Impact Rating</PageTitle>
+      <ImpactPage />
     </>
   )
 }
 
-export {MaterialityWrapper}
+export {ImpactWrapper}

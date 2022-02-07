@@ -3,14 +3,13 @@ import {Card2} from '../../../_metronic/partials/content/cards/Card2';
 import {useLocation} from 'react-router';
 import {KTSVG, toAbsoluteUrl} from '../../../_metronic/helpers';
 import {Link} from 'react-router-dom';
-import image from '../../../../public/media/illustrations/sketchy-1/20.png'
-import {About} from './components/About'
 
-const MaterialityHeader: FC = () => {
+const ImpactHeader: FC = () => {
     const location = useLocation()
 
     return (
         <>  
+        card here
             <div className="card mb-12">
                 <div className="card-body flex-column p-5">
                     <div className="d-flex align-items-center h-lg-250px p-5 p-lg-15">
@@ -27,7 +26,6 @@ const MaterialityHeader: FC = () => {
                     <div className="card-rounded bg-light d-flex flex-stack flex-wrap p-5">
                         <ul className="nav flex-wrap border-transparent fw-bolder">
                             <li className="nav-item my-1">
-                                {/* <a className="btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="#">Examples</a> */}
                                 <Link
                                 className={
                                 `btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase ` +
@@ -39,7 +37,6 @@ const MaterialityHeader: FC = () => {
                                 </Link>
                             </li>
                             <li className="nav-item my-1">
-                                {/* <a className="btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="#">Examples</a> */}
                                 <Link
                                 className={
                                 `btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase ` +
@@ -48,6 +45,17 @@ const MaterialityHeader: FC = () => {
                                 to='/materiality/examples'
                                 >
                                 Examples
+                                </Link>
+                            </li>
+                            <li className="nav-item my-1">
+                                <Link
+                                className={
+                                `btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase ` +
+                                (location.pathname === '/materiality/completed' && 'active')
+                                }
+                                to='/materiality/completed'
+                                >
+                                Completed 
                                 </Link>
                             </li>
                         </ul>
@@ -69,5 +77,5 @@ const MaterialityHeader: FC = () => {
     )
 }
 
-export default MaterialityHeader;
+export default ImpactHeader;
 

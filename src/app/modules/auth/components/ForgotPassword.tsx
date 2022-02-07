@@ -43,6 +43,7 @@ export function ForgotPassword() {
     },
   })
 
+
   return (
     <div className='w-lg-500px bg-white rounded shadow-sm p-10 p-lg-15 mx-auto'>
       <form

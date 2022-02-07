@@ -9,13 +9,12 @@ import {
   TablesWidget5,
 } from '../../../../_metronic/partials/widgets'
 
-import MaterialityHeader from '../MaterialityHeader'
-
-export function Examples() {
+export function About() {
   return (
     <>
-      <MaterialityHeader />
-      Put Example Content Here: 
+      <div className="card card-custom">
+        about here
+      </div> 
     </>
   )
 }
