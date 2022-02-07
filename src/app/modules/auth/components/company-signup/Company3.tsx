@@ -23,11 +23,7 @@ const indOptions = [
   {value: 'CG-TS', label: 'Consumer Goods - Toys & Sporting Goods'},
   {value: 'CG-MR', label: 'Consumer Goods - Multiline & Specialty Retailers & Distributors'},
   {value: 'CG-EC', label: 'Consumer Goods - E-commerce'},
-  {
-    value: 'TC-ES',
-    label:
-      'Technology & Communications - Electronic Manufacturing Services & Original Design Manufacturing',
-  },
+  {value: 'TC-ES', label: 'Technology & Communications - Electronic Manufacturing Services & Original Design Manufacturing'},
   {value: 'TC-HW', label: 'Technology & Communications - Hardware'},
   {value: 'TC-IM', label: 'Technology & Communications - Internet Media & Services'},
   {value: 'TC-SC', label: 'Technology & Communications - Semiconductors'},
@@ -82,7 +78,7 @@ const Company3: FC<IProps> = (props: IProps) => {
             data-bs-target='#kt_modal_1'
             onClick={() => props.openModal('primary_industry')}
           >
-            Primary Industry
+          Sustainable Industry Classification System®
           </Link>
           ?
         </label>
@@ -147,7 +143,7 @@ const Company3: FC<IProps> = (props: IProps) => {
 
       <div className='fv-row mb-10'>
         <label className='form-label'>
-          What is the address of the {props.assumed_name}'s headquarters?
+          What is the headquarters address of {props.assumed_name}?
         </label>
         <Field
           type='text'
@@ -163,7 +159,7 @@ const Company3: FC<IProps> = (props: IProps) => {
 
       <div className='fv-row mb-10'>
         <label className='form-label mb-3'>
-          What are the addresses of {props.assumed_name}'s additional locations?
+          Enter all additional addresses/locations of {props.assumed_name}.
         </label>
         <Field name='other_addresses' component={ArrayString} />
         <div className='text-danger mt-2'>

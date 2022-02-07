@@ -23,8 +23,8 @@ const currencies = [
 ]
 
 const netPositives = [
-  {value: 'YES', label: 'YES'},
-  {value: 'NO', label: 'NO'},
+  {value: 'Yes', label: 'Yes'},
+  {value: 'No', label: 'No'},
 ]
 
 const Company4: FC<IProps> = (props: IProps) => {
@@ -63,7 +63,7 @@ const Company4: FC<IProps> = (props: IProps) => {
 
       <div className='fv-row mb-10'>
         <label className='form-label'>
-          What is {props.assumed_name}'s{' '}
+          What is the{' '}
           <Link
             to='#'
             className='link-primary fw-bolder btn btn-flush'
@@ -71,9 +71,8 @@ const Company4: FC<IProps> = (props: IProps) => {
             data-bs-target='#kt_modal_1'
             onClick={() => props.openModal('ttm-revenue')}
           >
-            Trailing Twelve Month revenue
-          </Link>
-          ?
+          Trailing Twelve Month revenue
+          </Link> of {props.assumed_name}?
         </label>
 
         <Field

@@ -55,7 +55,7 @@ const CompanySignupPage: FC = () => {
     } else {
       values.user = user_id
       if (!user_id) {
-        setErrMessage('You should register before company setup!')
+        setErrMessage('You should register before company signup')
         return
       }
       createCompany(values)
@@ -63,7 +63,7 @@ const CompanySignupPage: FC = () => {
           history.push('/auth/login')
         })
         .catch(() => {
-          setErrMessage('Company register has been failed')
+          setErrMessage('Company register has failed')
         })
     }
   }

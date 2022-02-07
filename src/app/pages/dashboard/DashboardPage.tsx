@@ -10,7 +10,7 @@ const DashboardPage: FC = () => (
 
         <NewCompany />
 
-        <ProjectsWrapper/>
+        <ProjectsWrapper />
     </>
 )
 

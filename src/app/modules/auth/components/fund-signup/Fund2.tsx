@@ -120,13 +120,15 @@ const Fund2: FC<IProps> = (props: IProps) => {
       </div>
 
       <div className='fv-row mb-10'>
-        <label className='form-label'>Business Description</label>
-
+      <label className='form-label'>Enter a dscription of your business.</label>
+        <b>
+            <i> (2-3 Sentences)</i>
+        </b>
         <Field
           as='textarea'
           name='description'
           className='form-control form-control-lg form-control-solid'
-          rows={5}
+          rows={4}
           placeholder='Business Description'
           label='Business Description'
         ></Field>
@@ -151,7 +153,7 @@ const Fund2: FC<IProps> = (props: IProps) => {
           as='textarea'
           className='form-control form-control-lg form-control-solid mb-5'
           name='mission_statement'
-          rows={3}
+          rows={4}
           placeholder='Mission Statement'
           label='Mission Statement'
         />

@@ -80,7 +80,7 @@ export function Registration() {
           .catch(() => {
             setLoading(false)
             setSubmitting(false)
-            setStatus('Registration process has broken')
+            setStatus('This registraion has failed. Your email address may already be in use.')
           })
       }, 1000)
     },
@@ -164,6 +164,8 @@ export function Registration() {
             type='text'
           />
         </div>
+
+        {/* TODO: Make Dropdown like others */}
         <div className='row fv-row mb-7'>
           <SelectField
             title='Business Type'
@@ -218,9 +220,10 @@ export function Registration() {
               className='form-check-label fw-bold text-gray-700 fs-6'
               htmlFor='kt_login_toc_agree'
             >
-              I Agree to the{' '}
-              <Link to='/auth/terms' className='ms-1 link-primary'>
-                terms and conditions
+              I Agree to the
+              <Link to='#' className='ms-1 link-primary'>
+              terms and conditions
+              {/* TODO Add Terms and Conditions */}
               </Link>
               .
             </label>
