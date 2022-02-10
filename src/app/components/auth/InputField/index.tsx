@@ -41,7 +41,7 @@ const InputField: FC<InputFieldModel> = ({title, formikTouched, autoComplete, fo
           />
           {formikTouched && formikErrors && (
             <div className='fv-plugins-message-container'>
-              <div className='fv-help-block'>
+              <div className='text-danger'>
                 <span role='alert'>{formikErrors}</span>
               </div>
             </div>

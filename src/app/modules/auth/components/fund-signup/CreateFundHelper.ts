@@ -14,14 +14,12 @@ const createFundSchemas = [
     website: Yup.string().required().label('Website'),
   }),
   Yup.object({
-    primary_industry: Yup.string().required().label('Primary Industry'),
-    number_employees: Yup.string().required().label('Number of Employees'),
+    number_employees: Yup.number().required().label('Number of Employees'),
     primary_address: Yup.string().required().label('Primary Address'),
-    other_addresses: Yup.string().required().label('Other Addresses'),
     operating_countries: Yup.string().required().label('Operating Countries'),
   }),
   Yup.object({
-    operating_currencies: Yup.string().required().label('Operating Currencies'),
+    operating_currencies: Yup.array().required().label('Operating Currencies'),
     fund_type: Yup.string().required().label('Fund Type'),
     fund_number: Yup.string().required().label('Fund Number'),
   }),
@@ -38,13 +36,13 @@ const inits: FundModel = {
   mission_statement: '',
   website: '',
   primary_industry: 'FN-AC',
-  number_employees: '',
+  number_employees: 0,
   primary_address: '',
-  other_addresses: '',
+  other_addresses: [],
   operating_countries: '',
-  operating_currencies: '',
+  operating_currencies: [],
   fund_type: '',
-  fund_number: ''
+  fund_number: '',
 }
 
 export {createFundSchemas, inits}

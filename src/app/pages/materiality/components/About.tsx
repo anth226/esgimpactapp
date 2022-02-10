@@ -112,7 +112,7 @@ export function About() {
                     </div>
                     <div className="ps-lg-6">
                         <div className="mb-6">
-                            <a href="#" className="fw-bolder text-dark mb-4 fs-2 lh-base text-hover-primary">Step 5: Use Matrix and Impact Rating to set ESG targets and goals.</a>
+                            <a href="#" className="fw-bolder text-dark mb-4 fs-2 lh-base text-hover-primary">Step 5: Use Matrix to set ESG targets and goals.</a>
                             <div className="fw-bold fs-5 mt-4 text-gray-600 text-dark">We've been focused on making the from v4 to v5 but we've also not been afraid to step away been focused</div>
                         </div>
                         <div className="d-flex flex-stack flex-wrap">

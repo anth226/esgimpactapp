@@ -25,6 +25,7 @@ const FundSignupPage: FC = () => {
   const user_id: string = useSelector<RootState>(({auth}) => auth._id, shallowEqual) as string
 
   const [modalName, setModalName] = useState('')
+  const [assumedName, setAssumedName] = useState('')
 
   const openModal = (name: string) => {
     setModalName(name)
@@ -47,6 +48,9 @@ const FundSignupPage: FC = () => {
       return
     }
 
+    console.log("values", values)
+
+    setAssumedName(values.assumed_name)
     setCurrentSchema(createFundSchemas[stepper.current.currentStepIndex])
     if (stepper.current.currentStepIndex !== stepper.current.totatStepsNumber) {
       stepper.current.goNext()
@@ -87,7 +91,7 @@ const FundSignupPage: FC = () => {
           <h5 className='mb-3'>Welcome to Fund Signup!</h5>
           <span>
             Hello, thank you for joining ESG Impact. Our goal is to help companies find a prudent
-            balance between impact and profit. If you have any questions setting up your 
+            balance between impact and profit. If you have any questions setting up your fund
             profile, feel free to contact us at:
             <a href='mailto: contact@esgi.io'> contact@esgi.io</a>
           </span>
@@ -125,8 +129,6 @@ const FundSignupPage: FC = () => {
 
                 <div className='stepper-label'>
                   <h3 className='stepper-title'>Terms & Conditions</h3>
-
-                  {/* <div className='stepper-desc fw-bold'></div> */}
                 </div>
               </div>
 
@@ -171,26 +173,18 @@ const FundSignupPage: FC = () => {
                   <div className='stepper-desc fw-bold'>Your Fund Finances</div>
                 </div>
               </div>
-
-              {/* <div className='stepper-item' data-kt-stepper-element='nav'>
-                <div className='stepper-line w-40px'></div>
-
-                <div className='stepper-icon w-40px h-40px'>
-                  <i className='stepper-check fas fa-check'></i>
-                  <span className='stepper-number'>5</span>
-                </div>
-
-                <div className='stepper-label'>
-                  <h3 className='stepper-title'>Payment Details</h3>
-                  <div className='stepper-desc fw-bold'>Set Your Payment Method</div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
 
         <div className='d-flex flex-row-fluid flex-center bg-white rounded'>
-          <Formik validationSchema={currentSchema} initialValues={initValues} onSubmit={submitStep}>
+          <Formik
+            validationSchema={currentSchema}
+            initialValues={initValues}
+            onSubmit={submitStep}
+            validateOnChange={false}
+            validateOnBlur={false}
+          >
             {() => (
               <Form className='py-20 w-100 w-xl-700px px-9' noValidate id='kt_create_account_form'>
                 <div className='current' data-kt-stepper-element='content'>
@@ -200,10 +194,10 @@ const FundSignupPage: FC = () => {
                   <Fund2 openModal={openModal} />
                 </div>
                 <div data-kt-stepper-element='content'>
-                  <Fund3 openModal={openModal} />
+                  <Fund3 openModal={openModal} assumed_name={assumedName} />
                 </div>
                 <div data-kt-stepper-element='content'>
-                  <Fund4 openModal={openModal} />
+                  <Fund4 openModal={openModal} assumed_name={assumedName} />
                 </div>
 
                 {errMessage && <p className='text-danger'>{errMessage}</p>}

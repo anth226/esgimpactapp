@@ -130,7 +130,7 @@ const Company3: FC<IProps> = (props: IProps) => {
           How many full-time employees work at {props.assumed_name}?
         </label>
         <Field
-          type='text'
+          type='number'
           name='number_employees'
           className='form-control form-control form-control-solid'
           placeholder='Number of Employees'

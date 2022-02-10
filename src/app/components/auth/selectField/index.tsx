@@ -1,6 +1,9 @@
 import React, {FC} from 'react'
-import clsx from 'clsx'
 import {SelectFieldModel} from './models/SelectFieldModel'
+import Select from 'react-select'
+import makeAnimated from 'react-select/animated'
+
+const animatedComponents = makeAnimated()
 
 const SelectField: FC<SelectFieldModel> = ({
   title,
@@ -9,31 +12,26 @@ const SelectField: FC<SelectFieldModel> = ({
   formikErrors,
   formikTitle,
   className,
-  children,
+  options,
 }) => {
+  const field = formik.getFieldProps(`${formikTitle}`)
   return (
     <>
       <div className={className}>
         <label className='class="form-label fw-bolder text-dark fs-6 mb-3'>{title}</label>
-        <select
-          placeholder={title}
+        <Select
+          options={options}
           name={formikTitle}
-          {...formik.getFieldProps(`${formikTitle}`)}
-          className={clsx(
-            'form-control form-control-lg form-control-solid',
-            {
-              'is-invalid': formikTouched && formikErrors,
-            },
-            {
-              'is-valid': formikTouched && !formikErrors,
-            }
-          )}
-        >
-          {children}
-        </select>
+          components={animatedComponents}
+          closeMenuOnSelect={true}
+          className='form-control form-control-solid'
+          value={options ? options.find((option) => option.value === field.value) : ''}
+          onChange={(option: any) => formik.setFieldValue(field.name, option.value)}
+          onBlur={field.onBlur}
+        />
         {formikTouched && formikErrors && (
           <div className='fv-plugins-message-container'>
-            <div className='fv-help-block'>
+            <div className='text-danger'>
               <span role='alert'>{formikErrors}</span>
             </div>
           </div>
