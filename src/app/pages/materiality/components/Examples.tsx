@@ -14,7 +14,25 @@ import {
 import MaterialityHeader from '../MaterialityHeader'
 
 export function Examples() {
-  const onDragEnd = (result: any, columns: any, setColumns: any) => {
+  type ColumType = {
+    combine?: any
+    destination?:
+      | {
+          droppableId: string
+          index: number
+        }
+      | undefined
+    draggableId: string
+    mode: string
+    reason: string
+    source: {
+      droppableId: string
+      index: number
+    }
+    type: string
+  }
+
+  const onDragEnd = (result: ColumType, columns: any, setColumns: any) => {
     if (!result.destination) return
 
     const {source, destination} = result
@@ -75,7 +93,7 @@ export function Examples() {
         <DragDropContext onDragEnd={(result) => onDragEnd(result, col, setCol)}>
           {Object.entries(col).map(([id, column]) => {
             return (
-              <div style={{margin: 8, background: '#fff', cursor: 'all-scroll'}}>
+              <div key={id} style={{margin: 8, background: '#fff', cursor: 'all-scroll'}}>
                 <Droppable droppableId={id} key={id}>
                   {(provided, snapshot) => {
                     return (
