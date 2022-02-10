@@ -25,6 +25,7 @@ export function Examples() {
     }
   
     const onDragEnd = (result: ColumType, columns: any, setColumns: any) => {
+
     if (!result.destination) return
 
     const {source, destination} = result

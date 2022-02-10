@@ -46,7 +46,6 @@ const CompanySignupPage: FC = () => {
     if (!stepper.current) {
       return
     }
-
     setAssumedName(values.assumed_name)
     setCurrentSchema(createCompanySchemas[stepper.current.currentStepIndex])
     if (stepper.current.currentStepIndex !== stepper.current.totatStepsNumber) {
