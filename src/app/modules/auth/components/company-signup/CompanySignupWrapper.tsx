@@ -46,8 +46,6 @@ const CompanySignupPage: FC = () => {
     if (!stepper.current) {
       return
     }
-
-    console.log('values', values)
     setAssumedName(values.assumed_name)
     setCurrentSchema(createCompanySchemas[stepper.current.currentStepIndex])
     if (stepper.current.currentStepIndex !== stepper.current.totatStepsNumber) {
@@ -173,20 +171,6 @@ const CompanySignupPage: FC = () => {
                   <div className='stepper-desc fw-bold'>Your Company Finances</div>
                 </div>
               </div>
-
-              {/* <div className='stepper-item' data-kt-stepper-element='nav'>
-                <div className='stepper-line w-40px'></div>
-
-                <div className='stepper-icon w-40px h-40px'>
-                  <i className='stepper-check fas fa-check'></i>
-                  <span className='stepper-number'>5</span>
-                </div>
-
-                <div className='stepper-label'>
-                  <h3 className='stepper-title'>Payment Details</h3>
-                  <div className='stepper-desc fw-bold'>Set Your Payment Method</div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>

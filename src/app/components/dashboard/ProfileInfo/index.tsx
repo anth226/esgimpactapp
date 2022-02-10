@@ -159,7 +159,17 @@ const ProfileInfo: FC = () => {
               Activity Log
             </Link>
           </li>
-         
+          <li className='nav-item'>
+            <Link
+              className={
+                `nav-link text-active-primary me-6 ` +
+                (useLocation().pathname === '/crafted/account/settings' && 'active')
+              }
+              to='#'
+            >
+              Users List
+            </Link>
+          </li>
         </ul>
       </div>
 

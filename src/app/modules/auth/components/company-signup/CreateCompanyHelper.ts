@@ -16,7 +16,7 @@ const createCompanySchemas = [
   Yup.object({
     primary_industry: Yup.string().required().label('SICS Codes'),
     primary_products: Yup.string().required().label('Primary Products'),
-    number_employees: Yup.string().required().label('Number of Employees'),
+    number_employees: Yup.number().required().label('Number of Employees'),
     primary_address: Yup.string().required().label('Primary Address'),
     operating_countries: Yup.string().required().label('Operating Countries'),
   }),
@@ -48,7 +48,7 @@ const inits: CompanyModel = {
   primary_industry: '',
   secondary_industry: [],
   primary_products: '',
-  number_employees: '',
+  number_employees: 0,
   primary_address: '',
   other_addresses: [],
   operating_countries: '',

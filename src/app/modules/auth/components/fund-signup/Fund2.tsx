@@ -1,10 +1,20 @@
 import React, {FC} from 'react'
 import {Field, ErrorMessage} from 'formik'
 import {Link} from 'react-router-dom'
+import CustomDropDown from '../../../../components/auth/CustomSelect'
 
 interface IProps {
   openModal: Function
 }
+
+const lfOptions = [
+  {value: 'Corporation', label: 'Corporation'},
+  {value: 'Sole Proprietorship', label: 'Sole Proprietorship'},
+  {value: 'Non-profit', label: 'Non-profit'},
+  {value: 'Limited Liability', label: 'Limited Liability'},
+  {value: 'General Partnership', label: 'General Partnership'},
+  {value: 'Other', label: 'Other'},
+]
 
 const Fund2: FC<IProps> = (props: IProps) => {
   return (
@@ -98,21 +108,7 @@ const Fund2: FC<IProps> = (props: IProps) => {
           ?
         </label>
 
-        <Field
-          as='select'
-          name='legal_formation'
-          className='form-select form-select-lg form-select-solid'
-          label='Legal Formation'
-        >
-          <option></option>
-          <option value='1'>S Corporation</option>
-          <option value='2'>C Corporation</option>
-          <option value='3'>Sole Proprietorship</option>
-          <option value='4'>Non-profit</option>
-          <option value='5'>Limited Liability</option>
-          <option value='6'>General Partnership</option>
-          <option value='7'>Other</option>
-        </Field>
+        <Field name='legal_formation' component={CustomDropDown} options={lfOptions} />
 
         <div className='text-danger mt-2'>
           <ErrorMessage name='legal_formation' />

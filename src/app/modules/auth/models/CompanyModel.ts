@@ -10,7 +10,7 @@ export interface CompanyModel {
   primary_industry: string
   secondary_industry: Array<string>
   primary_products: string
-  number_employees: string
+  number_employees: number
   primary_address: string
   other_addresses: Array<string>
   operating_countries: string

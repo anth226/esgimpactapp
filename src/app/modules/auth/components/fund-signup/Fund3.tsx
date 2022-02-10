@@ -1,9 +1,11 @@
 import React, {FC} from 'react'
 import {Field, ErrorMessage} from 'formik'
 import {Link} from 'react-router-dom'
+import ArrayString from '../../../../components/auth/ArrayString'
 
 interface IProps {
   openModal: Function
+  assumed_name: string
 }
 
 const Fund3: FC<IProps> = (props: IProps) => {
@@ -14,9 +16,11 @@ const Fund3: FC<IProps> = (props: IProps) => {
       </div>
 
       <div className='fv-row mb-10'>
-        <label className='form-label'>How many full-time employees work at (Assumed Name)?</label>
+        <label className='form-label'>
+          How many full-time employees work at {props.assumed_name}?
+        </label>
         <Field
-          type='text'
+          type='number'
           name='number_employees'
           className='form-control form-control form-control-solid'
           placeholder='Number of Employees'
@@ -29,7 +33,7 @@ const Fund3: FC<IProps> = (props: IProps) => {
 
       <div className='fv-row mb-10'>
         <label className='form-label'>
-          What is the address of the (Assumed Name)'s headquarters?
+          What is the address of the {props.assumed_name}'s headquarters?
         </label>
         <Field
           type='text'
@@ -45,15 +49,9 @@ const Fund3: FC<IProps> = (props: IProps) => {
 
       <div className='fv-row mb-10'>
         <label className='form-label mb-3'>
-          What are the addresses of (Assumed Name)'s additional locations?
+          What are the addresses of {props.assumed_name}'s additional locations?
         </label>
-        <Field
-          type='text'
-          className='form-control form-control-lg form-control-solid mb-5'
-          name='other_addresses'
-          placeholder='Other Addresses'
-          label='Other Addresses'
-        />
+        <Field name='other_addresses' component={ArrayString} />
         <div className='text-danger mt-2'>
           <ErrorMessage name='other_addresses' />
         </div>
@@ -61,7 +59,7 @@ const Fund3: FC<IProps> = (props: IProps) => {
 
       <div className='fv-row mb-10'>
         <label className='form-label mb-3'>
-          What are (Assumed Name)'s{' '}
+          What are {props.assumed_name}'s{' '}
           <Link
             to='#'
             className='link-primary fw-bolder btn btn-flush'
