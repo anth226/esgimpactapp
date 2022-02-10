@@ -47,7 +47,6 @@ const CompanySignupPage: FC = () => {
       return
     }
 
-    console.log("vales", values)
     setAssumedName(values.assumed_name)
     setCurrentSchema(createCompanySchemas[stepper.current.currentStepIndex])
     if (stepper.current.currentStepIndex !== stepper.current.totatStepsNumber) {
@@ -173,26 +172,18 @@ const CompanySignupPage: FC = () => {
                   <div className='stepper-desc fw-bold'>Your Company Finances</div>
                 </div>
               </div>
-
-              {/* <div className='stepper-item' data-kt-stepper-element='nav'>
-                <div className='stepper-line w-40px'></div>
-
-                <div className='stepper-icon w-40px h-40px'>
-                  <i className='stepper-check fas fa-check'></i>
-                  <span className='stepper-number'>5</span>
-                </div>
-
-                <div className='stepper-label'>
-                  <h3 className='stepper-title'>Payment Details</h3>
-                  <div className='stepper-desc fw-bold'>Set Your Payment Method</div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
 
         <div className='d-flex flex-row-fluid flex-center bg-white rounded'>
-          <Formik validationSchema={currentSchema} initialValues={initValues} onSubmit={submitStep}>
+          <Formik
+            validationSchema={currentSchema}
+            initialValues={initValues}
+            onSubmit={submitStep}
+            validateOnChange={false}
+            validateOnBlur={false}
+          >
             {() => (
               <Form className='py-20 w-100 w-xl-700px px-9' noValidate id='kt_create_account_form'>
                 <div className='current' data-kt-stepper-element='content'>

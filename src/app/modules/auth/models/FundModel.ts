@@ -8,11 +8,11 @@ export interface FundModel {
   mission_statement: string
   website: string
   primary_industry: string
-  number_employees: string
+  number_employees: number
   primary_address: string
-  other_addresses: string
+  other_addresses: Array<string>
   operating_countries: string
-  operating_currencies: string
+  operating_currencies: Array<string>
   fund_type: string
   fund_number: string
   acceptTerms: boolean | null

@@ -81,7 +81,7 @@ export function AsideMenuMain() {
         to='/global-impact'
         title='Global Impact'
         fontIcon='bi-chat-left'
-        icon='/media/icons/duotune/maps/map006.svg'
+        icon='/media/icons/downloaded/globe-solid.svg'
       >
       </AsideMenuItem>
 

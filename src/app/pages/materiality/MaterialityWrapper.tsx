@@ -13,7 +13,7 @@ import { CSSTransition } from 'react-transition-group'
 
 import {About} from './components/About'
 import {Examples} from './components/Examples'
-import {Assessment} from './components/Assessment'
+import {AssessmentWrapper} from './AssessmentWrapper'
 
 const MaterialityPage: React.FC = () => {
   return (
@@ -24,7 +24,7 @@ const MaterialityPage: React.FC = () => {
 
         <Route path='/materiality/about' component={About} />
         <Route path='/materiality/examples' component={Examples} />
-        <Route path='/materiality/assessment' component={Assessment} />
+        <Route path='/materiality/assessment' component={AssessmentWrapper} />
 
         <Redirect to='/materiality/about' />
 

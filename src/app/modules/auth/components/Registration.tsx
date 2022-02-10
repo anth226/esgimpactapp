@@ -21,6 +21,11 @@ const initialValues = {
   acceptTerms: false,
 }
 
+const userTypes = [
+  {value: 'Company', label: 'Company'},
+  {value: 'Fund', label: 'Fund'},
+]
+
 const registrationSchema = Yup.object().shape({
   first_name: Yup.string()
     .min(2, 'Minimum 2 characters')
@@ -53,7 +58,7 @@ const registrationSchema = Yup.object().shape({
       is: (val: string) => (val && val.length > 0 ? true : false),
       then: Yup.string().oneOf([Yup.ref('password')], "Password and Confirm Password didn't match"),
     }),
-  acceptTerms: Yup.bool().required('You must accept the terms and conditions'),
+  acceptTerms: Yup.bool().oneOf([true], 'You should agree with the terms to continue').nullable(),
 })
 
 export function Registration() {
@@ -173,11 +178,8 @@ export function Registration() {
             formikTouched={formik.touched.type}
             formikErrors={formik.errors.type}
             formikTitle='type'
-          >
-            <option></option>
-            <option value='Company'>Company</option>
-            <option value='Fund'>Fund</option>
-          </SelectField>
+            options={userTypes}
+          ></SelectField>
         </div>
         <div className='mb-10 fv-row' data-kt-password-meter='true'>
           <div className='mb-1'>
@@ -222,19 +224,19 @@ export function Registration() {
             >
               I Agree to the
               <Link to='#' className='ms-1 link-primary'>
-              terms and conditions
-              {/* TODO Add Terms and Conditions */}
+                terms and conditions
+                {/* TODO Add Terms and Conditions */}
               </Link>
               .
             </label>
-            {formik.touched.acceptTerms && formik.errors.acceptTerms && (
-              <div className='fv-plugins-message-container'>
-                <div className='fv-help-block'>
-                  <span role='alert'>{formik.errors.acceptTerms}</span>
-                </div>
-              </div>
-            )}
           </div>
+          {formik.touched.acceptTerms && formik.errors.acceptTerms && (
+            <div className='fv-plugins-message-container'>
+              <div className='text-danger'>
+                <span role='alert'>{formik.errors.acceptTerms}</span>
+              </div>
+            </div>
+          )}
         </div>
         <div className='text-center'>
           <SubmitButton
