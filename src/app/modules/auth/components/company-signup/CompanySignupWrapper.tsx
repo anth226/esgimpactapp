@@ -47,7 +47,7 @@ const CompanySignupPage: FC = () => {
       return
     }
 
-    console.log("vales", values)
+    console.log('values', values)
     setAssumedName(values.assumed_name)
     setCurrentSchema(createCompanySchemas[stepper.current.currentStepIndex])
     if (stepper.current.currentStepIndex !== stepper.current.totatStepsNumber) {
@@ -192,7 +192,13 @@ const CompanySignupPage: FC = () => {
         </div>
 
         <div className='d-flex flex-row-fluid flex-center bg-white rounded'>
-          <Formik validationSchema={currentSchema} initialValues={initValues} onSubmit={submitStep}>
+          <Formik
+            validationSchema={currentSchema}
+            initialValues={initValues}
+            onSubmit={submitStep}
+            validateOnChange={false}
+            validateOnBlur={false}
+          >
             {() => (
               <Form className='py-20 w-100 w-xl-700px px-9' noValidate id='kt_create_account_form'>
                 <div className='current' data-kt-stepper-element='content'>
