@@ -21,7 +21,7 @@ const Footer: FC = () => {
 
         {/* begin::Middle */}
         <div className='order-2'>
-          <div className='text-muted'>Made with <strong className='text-secondary'>♥</strong> by the Dev Team at ESGi.</div>
+          <div className='text-muted'>Made with <strong className='text-secondary'>♥</strong> by the Team at ESGi.</div>
         </div>
         {/* end::Middle */}
 

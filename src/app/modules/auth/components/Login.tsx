@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import * as Yup from 'yup'
 import clsx from 'clsx'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import {useFormik} from 'formik'
 import * as auth from '../redux/AuthRedux'
 import {login} from '../redux/AuthCRUD'
@@ -34,6 +34,16 @@ const initialValues = {
 export function Login() {
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
+  const history = useHistory()
+
+  const redirectSignup = (type: string) => {
+    if (type === 'Company') {
+      history.push('/auth/setup/company')
+    } else {
+      history.push('/auth/setup/fund')
+    }
+  }
+
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
@@ -41,9 +51,15 @@ export function Login() {
       setLoading(true)
       setTimeout(() => {
         login(values.email, values.password)
-          .then(({data: {api_token}}) => {
-            setLoading(false)
-            dispatch(auth.actions.login(api_token))
+          .then(({data: {api_token, user}}) => {
+            if ((user.role === 'Company' && !user.company) || (user.role === 'Fund' && !user.fund)) {
+              dispatch(auth.actions.setUserID(user._id))
+              setLoading(false)
+              redirectSignup(user.role)
+            } else {
+              dispatch(auth.actions.login(api_token))
+              setLoading(false)
+            }
           })
           .catch(() => {
             setLoading(false)

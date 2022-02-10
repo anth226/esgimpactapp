@@ -7,9 +7,7 @@ import NewCompany from '../../components/dashboard/NewCompany'
 const DashboardPage: FC = () => (
     <>
         <ProfileInfo />
-
         <NewCompany />
-
         <ProjectsWrapper />
     </>
 )

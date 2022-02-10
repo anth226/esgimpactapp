@@ -76,7 +76,7 @@ const DeactivateAccount: React.FC = () => {
             </div>
             {formik.touched.confirm && formik.errors.confirm && (
               <div className='fv-plugins-message-container'>
-                <div className='fv-help-block'>{formik.errors.confirm}</div>
+                <div className='text-danger'>{formik.errors.confirm}</div>
               </div>
             )}
           </div>

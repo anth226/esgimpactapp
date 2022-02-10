@@ -1,20 +1,30 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
 import {v4 as uuid} from 'uuid'
-import {KTSVG} from '../../../../_metronic/helpers'
-import {
-  ChartsWidget1,
-  TablesWidget1,
-  ListsWidget5,
-  TablesWidget5,
-} from '../../../../_metronic/partials/widgets'
 
 import MaterialityHeader from '../MaterialityHeader'
 
 export function Examples() {
-  const onDragEnd = (result: any, columns: any, setColumns: any) => {
+    type ColumType = {
+      combine?: any
+      destination?:
+        | {
+            droppableId: string
+            index: number
+          }
+        | undefined
+      draggableId: string
+      mode: string
+      reason: string
+      source: {
+        droppableId: string
+        index: number
+      }
+      type: string
+    }
+  
+    const onDragEnd = (result: ColumType, columns: any, setColumns: any) => {
     if (!result.destination) return
 
     const {source, destination} = result
@@ -72,12 +82,12 @@ export function Examples() {
       <MaterialityHeader />
 
       <div style={{display: 'flex', justifyContent: 'center', alignItems: 'stretch'}}>
-        <DragDropContext onDragEnd={(result) => onDragEnd(result, col, setCol)}>
+        <DragDropContext onDragEnd={(result: any) => onDragEnd(result, col, setCol)}>
           {Object.entries(col).map(([id, column]) => {
             return (
-              <div style={{margin: 8, background: '#fff', cursor: 'all-scroll'}}>
+              <div key={id} style={{margin: 8, background: '#fff', cursor: 'all-scroll'}}>
                 <Droppable droppableId={id} key={id}>
-                  {(provided, snapshot) => {
+                  {(provided: any, snapshot: any) => {
                     return (
                       <>
                         <div
@@ -94,7 +104,7 @@ export function Examples() {
                           {column.items.map((item, index) => {
                             return (
                               <Draggable key={item.id} draggableId={item.id} index={index}>
-                                {(provided, snapshot) => {
+                                {(provided: any, snapshot: any) => {
                                   return (
                                     <div
                                       ref={provided.innerRef}
