@@ -48,7 +48,7 @@ const FundSignupPage: FC = () => {
       return
     }
 
-    console.log("values", values)
+    console.log('values', values)
 
     setAssumedName(values.assumed_name)
     setCurrentSchema(createFundSchemas[stepper.current.currentStepIndex])

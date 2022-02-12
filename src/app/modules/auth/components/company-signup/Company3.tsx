@@ -1,8 +1,10 @@
-import React, {FC} from 'react'
+import React, {FC, useState} from 'react'
 import {Field, ErrorMessage} from 'formik'
 import {Link} from 'react-router-dom'
 import CustomDropDown from '../../../../components/auth/CustomSelect'
 import ArrayString from '../../../../components/auth/ArrayString'
+import PlaceAutoComplete from '../../../../components/places-auto-complete'
+import {geocodeByAddress, getLatLng} from 'react-places-autocomplete'
 
 interface IProps {
   openModal: Function
@@ -23,7 +25,11 @@ const indOptions = [
   {value: 'CG-TS', label: 'Consumer Goods - Toys & Sporting Goods'},
   {value: 'CG-MR', label: 'Consumer Goods - Multiline & Specialty Retailers & Distributors'},
   {value: 'CG-EC', label: 'Consumer Goods - E-commerce'},
-  {value: 'TC-ES', label: 'Technology & Communications - Electronic Manufacturing Services & Original Design Manufacturing'},
+  {
+    value: 'TC-ES',
+    label:
+      'Technology & Communications - Electronic Manufacturing Services & Original Design Manufacturing',
+  },
   {value: 'TC-HW', label: 'Technology & Communications - Hardware'},
   {value: 'TC-IM', label: 'Technology & Communications - Internet Media & Services'},
   {value: 'TC-SC', label: 'Technology & Communications - Semiconductors'},
@@ -62,6 +68,19 @@ const indOptions = [
 ]
 
 const Company3: FC<IProps> = (props: IProps) => {
+  const [address, setAddress] = useState('')
+
+  // In case we may need coordinates in the future
+  const [coordinates, setCoordinates] = useState({
+    lat: 0,
+    lng: 0,
+  })
+  const handleSelect = async (value: any) => {
+    const results = await geocodeByAddress(value)
+    const latlng = await getLatLng(results[0])
+    setAddress(value)
+    setCoordinates(latlng)
+  }
   return (
     <div className='w-100'>
       <div className='pb-10 pb-lg-15'>
@@ -78,7 +97,7 @@ const Company3: FC<IProps> = (props: IProps) => {
             data-bs-target='#kt_modal_1'
             onClick={() => props.openModal('primary_industry')}
           >
-          Sustainable Industry Classification System®
+            Sustainable Industry Classification System®
           </Link>
           ?
         </label>
@@ -145,13 +164,14 @@ const Company3: FC<IProps> = (props: IProps) => {
         <label className='form-label'>
           What is the headquarters address of {props.assumed_name}?
         </label>
-        <Field
-          type='text'
+        <PlaceAutoComplete
+          address={address}
+          handleSelect={handleSelect}
+          setAddress={setAddress}
           name='primary_address'
-          className='form-control form-control-lg form-control-solid'
-          placeholder='Primary Address'
           label='Primary Address'
-        ></Field>
+          placeholder='Primary Address'
+        />
         <div className='text-danger mt-2'>
           <ErrorMessage name='primary_address' />
         </div>
