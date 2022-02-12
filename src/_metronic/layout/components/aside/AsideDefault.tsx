@@ -67,7 +67,7 @@ const AsideDefault: FC = () => {
       <div className='aside-footer flex-column-auto pt-5 pb-7 px-5' id='kt_aside_footer'>
         <a
           target='#'
-          className='btn btn-secondary w-100'
+          className='btn btn-custom footer-btn-custom btn-secondary w-100'
           href={process.env.REACT_APP_PREVIEW_DOCS_URL}
           data-bs-toggle='tooltip'
           data-bs-trigger='hover'

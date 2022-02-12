@@ -73,6 +73,18 @@
         @include svg-icon-color(#b5b5c3);
       }
     }
+    .footer-btn-custom {
+      @include button-custom-variant(
+        #3f4254,
+        null,
+        null,
+        #e4e6ef,
+        #b5b5c3,
+        null,
+        null,
+        rgba(63, 66, 84, 0.35)
+      );
+    }
   }
 
   // Light theme
